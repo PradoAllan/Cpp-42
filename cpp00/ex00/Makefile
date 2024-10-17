@@ -27,10 +27,10 @@ fclean : clean
 
 re : fclean all
 
-progress:
+progress :
 	@$(MAKE) --no-print-directory _progress
 
-_progress:
+_progress :
 	@tput civis
 	@width=50; \
 	progress=0; \
@@ -49,5 +49,8 @@ _progress:
 	done; \
 	printf "\n\033[0;32m COMPILATION COMPLETE!\033[0m\n"; \
 	tput cnorm
+
+workflow :
+	@$(COMPILER) $(FLAGS) $(CPP_FLAGS) $(SRC) -o $(NAME)
 
 .PHONY: all clean fclean re
