@@ -1,0 +1,14 @@
+name: Compiling C++ files
+
+on: push
+
+jobs:
+  make_cpp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compiling ex00
+        run: |
+          cd ex00
+          make
