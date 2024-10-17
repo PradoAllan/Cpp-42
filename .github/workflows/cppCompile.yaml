@@ -1,14 +1,13 @@
-name: Compiling C++ files
+name: C++ compiler checker
 
 on: push
 
 jobs:
-  make_cpp:
+  makefile_cpp:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Compiling ex00
+      - name: Compiling c++ files
         run: |
           cd cpp00
           cd ex00
