@@ -11,4 +11,4 @@ jobs:
         run: |
           cd cpp00
           cd ex00
-          make
+          make workflow
