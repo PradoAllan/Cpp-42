@@ -10,5 +10,6 @@ jobs:
 
       - name: Compiling ex00
         run: |
+          cd cpp00
           cd ex00
           make
