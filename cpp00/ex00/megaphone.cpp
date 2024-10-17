@@ -1,28 +1,25 @@
 #include <iostream>
 
+void	stringToUpper(char *s)
+{
+	if (!s)
+		return ;
+	for (int i = 0; s[i] != '\0'; i++)
+		s[i] = toupper(s[i]);
+}
+
 int	main(int ac, char **av)
 {
 	if (ac == 1)
-		std::cout << "* LOUD AND UNBERABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "* LOUD AND UNBERABLE FEEDBACK NOISE *";
 	else
 	{
 		for (int i = 1; i < ac; i++)
-			std::cout << "Testing: " << av[i];
+		{
+			stringToUpper(av[i]);
+			std::cout << av[i];
+		}
 	}
+	std::cout << std::endl;
 	return (1);
 }
-
-/*
-int	main(int ac, char **av)
-{
-	char	s[30];
-
-	std::cout << "Hello world!" << std::endl;
-	std::cout << "Input your name" << std::endl;
-	std::cin >> s;
-	std::cout << "Hello, [" << s << "]" << std::endl;
-
-
-	return (1);
-}
-*/
