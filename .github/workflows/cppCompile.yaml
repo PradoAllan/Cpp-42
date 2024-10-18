@@ -5,7 +5,8 @@ on: push
 jobs:
   makefile_cpp_ex00:
     runs-on: ubuntu-latest
-      steps:
+    steps:
+      - uses: actions/checkout@v4
       - name: Compiling c++ files
         run: |
           cd cpp00
