@@ -3,15 +3,21 @@ name: C++ compiler checker
 on: push
 
 jobs:
-  makefile_cpp:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
+  - uses: actions/checkout@v4
+
+    makefile_cpp_ex00:
+    #runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: Compiling c++ files
         run: |
           cd cpp00
           cd ex00
           make workflow
+
+    makefile_cpp_ex01:
+    steps:
+      - name: Compiling c++ files
         run: |
           cd ../ex01
           make workflow
