@@ -12,5 +12,6 @@ jobs:
           cd cpp00
           cd ex00
           make workflow
+        run: |
           cd ../ex01
           make workflow
