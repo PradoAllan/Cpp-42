@@ -8,15 +8,20 @@ CPP_FLAGS = -std=c++98
 
 SRC = megaphone.cpp
 
-$(NAME) : progress
-	@$(COMPILER) $(FLAGS) $(CPP_FLAGS) $(SRC) -o $(NAME)
+OBJ = $(SRC:.cpp=.o)
+
+.cpp.o :
+	@$(COMPILER) $(FLAGS) $(CPP_FLAGS) -c $< -o $(<:.cpp=.o)
+
+$(NAME) : $(OBJ) progress
+	@$(COMPILER) $(FLAGS) $(CPP_FLAGS) $(OBJ) -o $(NAME)
 
 all : $(NAME)
 	@sleep 0.2
 	@printf "\033[0;32m ALL READY TO GO!\033[0m\n"; \
 
 clean :
-	@rm -rf *.o
+	@rm -rf $(OBJ)
 	@sleep 0.1
 	@printf "\033[0;32m OBJECTS CLEANED!\033[0m\n"; \
 
@@ -50,7 +55,7 @@ _progress :
 	printf "\n\033[0;32m COMPILATION COMPLETE!\033[0m\n"; \
 	tput cnorm
 
-workflow :
-	@$(COMPILER) $(FLAGS) $(CPP_FLAGS) $(SRC) -o $(NAME)
+workflow : $(OBJ)
+	@$(COMPILER) $(FLAGS) $(CPP_FLAGS) $(OBJ) -o $(NAME)
 
 .PHONY: all clean fclean re
