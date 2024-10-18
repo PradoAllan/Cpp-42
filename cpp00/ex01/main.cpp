@@ -5,6 +5,8 @@ int	main(void)
 {
 	Sample test;
 
-	std::cout << "test" << std::endl;
+	test.foo = 42;
+	std::cout << test.foo << std::endl;
+	test.bar();
 	return (1);
 }

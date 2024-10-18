@@ -4,8 +4,12 @@
 class Sample
 {
 	public:
-		Sample(void);
-		~Sample(void);
+		int	foo; //Atributes
+
+		Sample(void); //Constructor
+		~Sample(void); //Destructor
+
+		void	bar(void); //Methods of this class Sample
 };
 
 
