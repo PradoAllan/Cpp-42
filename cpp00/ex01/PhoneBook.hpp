@@ -1,30 +1,32 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include <iostream>
+# include <iostream>
+# include "Contact.hpp"
 
-class Sample
+class PhoneBook
 {
+	private:
+		Contact contacts[8];
+		int		counter;
+		int		index;
 	public:
-		int	foo; //Atributes
-
-		Sample(void); //Constructor
-		~Sample(void); //Destructor
-
-		void	bar(void); //Methods of this class Sample
+		PhoneBook(); // Constructor
+		~PhoneBook(); // Destructor
+		// Setters
+		void	set_counter(int counter);
+		void	set_index(int index);
+		// Getters
+		int		get_counter();
+		int		get_index();
+		// Other methods
+		void	showAllContacts();
+		void	addNewContact(std::string name,
+								std::string lastName,
+								std::string nickname,
+								std::string darkestSecret,
+								std::string phoneNumber);
+		void	incrementIndex();
 };
-
-
-/*
-class	Car
-{
-	public:
-		char	brand[30];
-		char	model[30];
-		int	year;
-
-		Car(char brand[], char model[], int year);
-};
-*/
 
 #endif
