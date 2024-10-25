@@ -7,7 +7,8 @@ FLAGS = -Wall -Werror -Wextra
 CPP_FLAGS = -std=c++98
 
 SRC = main.cpp \
-      PhoneBook.cpp
+      PhoneBook.cpp \
+      Contact.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

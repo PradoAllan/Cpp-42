@@ -14,7 +14,7 @@ class   Contact
         std::string phoneNumber;
     public:
         Contact(); // Constructor
-        ContactParams(std::string name, std::string lastName);
+        //void    ContactParams(std::string name, std::string lastName);
         ~Contact(); // Destructor
         // Setters
         void    set_name(std::string name);
@@ -23,12 +23,13 @@ class   Contact
         void    set_darkestSecret(std::string darkestSecret);
         void    set_phoneNumber(std::string phoneNumber);
         // Getters
-        std::string set_name(std::string name);
-        std::string set_lastName(std::string lastName);
-        std::string set_nickname(std::string nickname);
-        std::string set_darkestSecret(std::string darkestSecret);
-        std::string set_phoneNumber(std::string phoneNumber);
+        std::string get_name();
+        std::string get_lastName();
+        std::string get_nickname();
+        std::string get_darkestSecret();
+        std::string get_phoneNumber();
         // Other methods
-}
+        void    showAttributes();
+};
 
 #endif
