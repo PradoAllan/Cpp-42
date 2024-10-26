@@ -96,3 +96,8 @@ void	PhoneBook::addFunction()
 	this->contacts[index].set_darkestSecret(darkestSecret);
 	this->contacts[index].set_phoneNumber(phoneNumber);
 }
+
+void	PhoneBook::searchFunction(std::string option)
+{
+	std::cout << option << std::endl;
+}

@@ -27,6 +27,7 @@ class PhoneBook
 								std::string darkestSecret,
 								std::string phoneNumber);
 		void	addFunction();
+		void	searchFunction(std::string option);
 		void	incrementIndex();
 };
 
