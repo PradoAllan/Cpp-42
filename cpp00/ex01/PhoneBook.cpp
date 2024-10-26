@@ -97,7 +97,16 @@ void	PhoneBook::addFunction()
 	this->contacts[index].set_phoneNumber(phoneNumber);
 }
 
-void	PhoneBook::searchFunction(std::string option)
+void	PhoneBook::searchFunction()
 {
-	std::cout << option << std::endl;
+	int		index = get_index();
+	int		toShow;
+
+	this->showAllContacts();
+	std::cout << "Type the INDEX of the contact you want: " << std::endl;
+	std::cin >> toShow;
+	if (toShow < index)
+		this->contacts[toShow].showAttributes();
+	else
+		std::cout << "INDEX not valid..." << std::endl;
 }

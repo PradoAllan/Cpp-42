@@ -21,7 +21,7 @@ void    checkAndExecute(std::string option, PhoneBook &list)
     else if (option.compare("SEARCH") == 0)
     {
         std::cout << "Search option..." << std::endl;
-        list.showAllContacts();
+        list.searchFunction();
     }
     else if (option.compare("EXIT") == 0)
         std::cout << "Exit option..." << std::endl;
