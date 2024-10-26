@@ -44,7 +44,7 @@ void	PhoneBook::showAllContacts()
 	std::cout << "PRINTING INSIDE SHOW ALL CONTACTS FUNC: " << counter << std::endl;
 	for (int i = 0; i < counter; i++)
 	{
-		contacts[i].showAttributes();
+		this->contacts[i].showAttributes();
 		std::cout << std::endl;
 	}
 }
