@@ -3,7 +3,7 @@
 
 PhoneBook::PhoneBook()
 {
-	set_counter(8);
+	set_counter(3);
 	set_index(0);
 }
 
@@ -31,17 +31,16 @@ int		PhoneBook::get_index()
 
 void	PhoneBook::incrementIndex()
 {
-	int		index = get_index();
+	// int		index = get_index();
 	
-	set_index(index + 1);
-	//this->set_index(this->get_index() + 1);
+	// set_index(index + 1);
+	set_index(get_index() + 1);
 }
 
 void	PhoneBook::showAllContacts()
 {
 	int		counter = get_counter();
 
-	std::cout << "PRINTING INSIDE SHOW ALL CONTACTS FUNC: " << counter << std::endl;
 	for (int i = 0; i < counter; i++)
 	{
 		this->contacts[i].showAttributes();
@@ -53,13 +52,10 @@ void	PhoneBook::addNewContact(std::string name, std::string lastName, std::strin
 {
 	int		index = get_index();
 
-	if (index == 8)
+	if (index == 3)
 	{
-		//std::cout << "No more room for another contact..." << std::endl;
-		//std::cout << "Updating the first contact..." << std::endl;
 		set_index(0);
 		index = 0;
-		//return ;
 	}
 	incrementIndex();
 	this->contacts[index].set_name(name);
@@ -69,26 +65,34 @@ void	PhoneBook::addNewContact(std::string name, std::string lastName, std::strin
 	this->contacts[index].set_phoneNumber(phoneNumber);
 }
 
-// Sample::Sample(void)
-// {
-// 	std::cout << "Constructor was called!" << std::endl;
-// }
-
-// Sample::~Sample(void)
-// {
-// 	std::cout << "Destructor was called!" << std::endl;
-// }
-
-// void	Sample::bar(void)
-// {
-// 	std::cout << "Method bar was called!" << std::endl;
-// }
-
-/*
-Car::Car(char brand[], char model[], int year)
+void	PhoneBook::addFunction()
 {
-	brand = brand;
-	model = model;
-	year = year;
+	int		index = get_index();
+	std::string name;
+    std::string lastName;
+    std::string nickname;
+    std::string darkestSecret;
+    std::string phoneNumber;
+
+	std::cout << "Type the contact's Name: "<< std::endl;
+	std::cin >> name;
+	std::cout << "Type the contact's Nast Name: " << std::endl;
+	std::cin >> lastName;
+	std::cout << "Type the contact's Nickname: " << std::endl;
+	std::cin >> nickname;
+	std::cout << "Type the contact's Darkest Secret: " << std::endl;
+	std::cin >> darkestSecret;
+	std::cout << "Type the contact's Phone Number: " << std::endl;
+	std::cin >> phoneNumber;
+	if (index == 3)
+	{
+		set_index(0);
+		index = 0;
+	}
+	incrementIndex();
+	this->contacts[index].set_name(name);
+	this->contacts[index].set_lastName(lastName);
+	this->contacts[index].set_nickname(nickname);
+	this->contacts[index].set_darkestSecret(darkestSecret);
+	this->contacts[index].set_phoneNumber(phoneNumber);
 }
-*/

@@ -7,7 +7,7 @@
 class PhoneBook
 {
 	private:
-		Contact contacts[8];
+		Contact contacts[3];
 		int		counter;
 		int		index;
 	public:
@@ -26,6 +26,7 @@ class PhoneBook
 								std::string nickname,
 								std::string darkestSecret,
 								std::string phoneNumber);
+		void	addFunction();
 		void	incrementIndex();
 };
 

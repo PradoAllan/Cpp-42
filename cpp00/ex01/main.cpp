@@ -1,38 +1,47 @@
-#include <iostream>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
+void    stringToUpper(std::string &s)
+{
+    if (s.empty())
+        return ;
+    //if (!s)
+    //   return ;
+    for (int i = 0; s[i] != '\0'; i++)
+        s[i] = toupper(s[i]);
+}
+
+void    checkAndExecute(std::string option, PhoneBook &list)
+{
+    if (option.compare("ADD") == 0)
+    {
+        std::cout << "Add option..." << std::endl;
+        list.addFunction();
+    }
+    else if (option.compare("SEARCH") == 0)
+    {
+        std::cout << "Search option..." << std::endl;
+        list.showAllContacts();
+    }
+    else if (option.compare("EXIT") == 0)
+        std::cout << "Exit option..." << std::endl;
+    else
+        std::cout << "Type only these options: ADD, EXIT or SEARCH." << std::endl;
+}
+
 int	main(void)
 {
-    //Contact me;
-    PhoneBook test;
+    PhoneBook   book;
+    std::string option;
 
-    test.addNewContact("Allan", "Prado", "aprado", "Sou lindo", "996470211");
-    test.addNewContact("Marcelo", "Mota", "mmota", "Sou lindo", "996470211");
-    test.addNewContact("Jane", "Batista", "jbatista", "Sou lindo", "996470211");
-    test.addNewContact("Rodrigo", "Prado", "rprado", "Sou lindo", "996470211");
-    test.addNewContact("Raylane", "Prado", "rayprado", "Sou lindo", "996470211");
-    test.addNewContact("Marcos", "Prado", "mprado", "Sou lindo", "996470211");
-    test.addNewContact("Sandro", "Prado", "sprado", "Sou lindo", "996470211");
-    test.addNewContact("Lucia", "Batista", "lbatista", "Sou lindo", "996470211");
-    test.showAllContacts();
-    //std::cout << test.get_counter() << std::endl;
-    test.addNewContact("Marcos", "Mota", "marmota", "Sou lindo", "996470211");
-    test.showAllContacts();
-    //std::cout << test.get_counter() << std::endl;
-    test.addNewContact("Allan", "Prado", "aprado", "Sou lindo", "996470211");
-    test.showAllContacts();
-
-    // me.showAttributes();
-    // me.set_name("Allan");
-    // me.set_lastName("Prado");
-    // me.set_phoneNumber("996470211");
-    // me.showAttributes();
-//
-//	Sample test;
-//
-//	test.foo = 42;
-//	std::cout << test.foo << std::endl;
-//	test.bar();
+    do
+    {
+        std::cout << "Type your option: " << std::endl;
+        std::cin >> option;
+        stringToUpper(option);
+        checkAndExecute(option, book);
+    }
+    while (option.compare("EXIT") != 0);
+    book.showAllContacts();
 	return (1);
 }
