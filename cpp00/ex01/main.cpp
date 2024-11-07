@@ -21,7 +21,7 @@ void    checkAndExecute(std::string option, PhoneBook &list)
     else if (option.compare("SEARCH") == 0)
     {
         std::cout << "Search option..." << std::endl;
-        list.searchFunction();
+        list.showFunction();
     }
     else if (option.compare("EXIT") == 0)
         std::cout << "Exit option..." << std::endl;
@@ -29,6 +29,9 @@ void    checkAndExecute(std::string option, PhoneBook &list)
         std::cout << "Type only these options: ADD, EXIT or SEARCH." << std::endl;
 }
 
+//###########################
+//#       correct main      #
+//###########################
 int	main(void)
 {
     PhoneBook   book;
@@ -45,3 +48,15 @@ int	main(void)
     book.showAllContacts();
 	return (1);
 }
+
+/* int     main(void)
+{
+    Contact c1;
+
+    c1.set_name("Allan");
+    c1.set_lastName("Prado");
+    c1.set_darkestSecret("adadadwwd");
+    c1.set_nickname("aprado");
+    c1.set_phoneNumber("987654321");
+    c1.showAttributes();
+} */

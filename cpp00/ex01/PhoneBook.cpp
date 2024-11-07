@@ -110,3 +110,29 @@ void	PhoneBook::searchFunction()
 	else
 		std::cout << "INDEX not valid..." << std::endl;
 }
+
+void	PhoneBook::showFunction()
+{
+	int limit = get_counter();
+	int	toShow= 0;
+
+	if (limit == 0)
+	{
+		std::cout << "No contacts found... Try to ADD one!" << std::endl;
+		return ;
+	}
+	std::cout << "|  index   |first name|last name | nickname |" << std::endl;
+	for (int i = 0; i < limit; i++)
+	{
+		this->contacts[i].showAttributes();
+	}
+	std::cout << "Type the INDEX of the contact you want: " << std::endl;
+	std::cin >> toShow;
+	if (toShow < limit)
+	{
+		std::cout << "|  index   |first name|last name | nickname |" << std::endl;
+		this->contacts[toShow].showAttributes();
+	}
+	else
+		std::cout << "INDEX NOT VALID..." << std::endl;
+}

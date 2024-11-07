@@ -2,6 +2,7 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
+# include <iomanip>
 # include "Contact.hpp"
 
 class PhoneBook
@@ -29,6 +30,7 @@ class PhoneBook
 		void	addFunction();
 		void	searchFunction();
 		void	incrementIndex();
+		void	showFunction();
 };
 
 #endif

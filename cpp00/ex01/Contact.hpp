@@ -2,6 +2,7 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <iomanip>
 //first name, last name, nickname, phone number, and darkest secret.
 
 class   Contact

@@ -69,3 +69,9 @@ void    Contact::showAttributes()
     std::cout << this->darkestSecret << std::endl;
     std::cout << this->phoneNumber << std::endl;
 }
+
+/* void    Contact::showAttributes()
+{
+    std::cout << "|  index   |first name|last name | nickname |" << std::endl;
+    std::cout << "|" << std::setw(11) << "|" << std::setw(11) << "|" << std::setw(11) << "|" << std::setw(11) << "|" << std::endl;
+} */
