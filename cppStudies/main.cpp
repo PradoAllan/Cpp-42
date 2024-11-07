@@ -1,9 +1,16 @@
 #include <iostream>
-#include "Studying.hpp"
+#include "Employee.hpp"
 
 int	main(void)
 {
-	Studying	test;
+	Employee	first;
+	first.set_name("Allan");
+	std::cout << first.get_name() << std::endl;
+
+	return(1);
+
+
+/* 	Studying	test;
 	Studying	another;
 
 	//test.foo = 42;
@@ -18,5 +25,5 @@ int	main(void)
 	test.bar(99999999);
 	another.bar(88888888);
 
-	return (1);
+	return (1); */
 }

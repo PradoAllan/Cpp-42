@@ -7,7 +7,7 @@ FLAGS = -Wall -Werror -Wextra
 CPP_FLAGS = -std=c++98
 
 SRC = main.cpp \
-      Studying.cpp
+      Employee.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
