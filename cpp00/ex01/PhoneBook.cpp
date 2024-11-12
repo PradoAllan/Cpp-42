@@ -113,22 +113,22 @@ void	PhoneBook::searchFunction()
 
 void	PhoneBook::showFunction()
 {
-	int limit = get_counter();
+	int actual = get_index();
 	int	toShow= 0;
 
-	if (limit == 0)
+	if (actual == 0)
 	{
 		std::cout << "No contacts found... Try to ADD one!" << std::endl;
 		return ;
 	}
 	std::cout << "|  index   |first name|last name | nickname |" << std::endl;
-	for (int i = 0; i < limit; i++)
+	for (int i = 0; i < actual; i++)
 	{
 		this->contacts[i].showAttributes();
 	}
 	std::cout << "Type the INDEX of the contact you want: " << std::endl;
 	std::cin >> toShow;
-	if (toShow < limit)
+	if (toShow < actual)
 	{
 		std::cout << "|  index   |first name|last name | nickname |" << std::endl;
 		this->contacts[toShow].showAttributes();

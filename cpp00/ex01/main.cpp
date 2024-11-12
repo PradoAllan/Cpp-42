@@ -39,7 +39,7 @@ int	main(void)
 
     do
     {
-        std::cout << "Type your option: " << std::endl;
+        std::cout << "Type your option: ADD, SEARCH or EXIT." << std::endl;
         std::cin >> option;
         stringToUpper(option);
         checkAndExecute(option, book);

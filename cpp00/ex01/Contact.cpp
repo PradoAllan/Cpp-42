@@ -63,11 +63,24 @@ std::string Contact::get_phoneNumber()
 
 void    Contact::showAttributes()
 {
-    std::cout << this->name << std::endl;
-    std::cout << this->lastName << std::endl;
-    std::cout << this->nickname << std::endl;
-    std::cout << this->darkestSecret << std::endl;
-    std::cout << this->phoneNumber << std::endl;
+    int printSpace = 10 - this->name.length();
+    
+    if (printSpace <= 0) //Significa que vamos precisar substituir as letras por '.'
+    {
+        std::cout << "Usar uma substr, talvez..." << std::endl;
+    }
+    else
+    {
+        std::cout << "|" << std::setw(printSpace) << this->name << "|" << std::endl;
+    }
+
+
+    // std::cout << "|" << std::endl;
+    // std::cout << this->name << std::endl;
+    // std::cout << this->lastName << std::endl;
+    // std::cout << this->nickname << std::endl;
+    // std::cout << this->darkestSecret << std::endl;
+    // std::cout << this->phoneNumber << std::endl;
 }
 
 /* void    Contact::showAttributes()
