@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = 
 
 COMPILER = c++
 
@@ -6,7 +6,7 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC = megaphone.cpp
+SRC =
 
 OBJ = $(SRC:.cpp=.o)
 
