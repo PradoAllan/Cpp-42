@@ -1,5 +1,6 @@
 Links para documentação:
     https://cplusplus.com/reference/iostream/
+    https://cplusplus.com/doc/oldtutorial/
 
 
 Notas sobre os vídeos de C++ da intra.
