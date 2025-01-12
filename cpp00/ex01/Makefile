@@ -1,4 +1,4 @@
-NAME = 
+NAME = phonebook
 
 COMPILER = c++
 
@@ -6,7 +6,9 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	Contact.cpp \
+		PhoneBook.cpp \
+		main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -7,8 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Compiling c++ files
+      - name: Compiling cpp00/ex00 files
         run: |
           cd cpp00
           cd ex00
+          make workflow
+      - name: Compiling cpp00/ex01 files
+        run: |
+          cd ../ex01
           make workflow

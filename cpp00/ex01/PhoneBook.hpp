@@ -6,7 +6,7 @@
 class PhoneBook
 {
     private:
-        Contact contacts[8];
+        Contact contacts[3];
         int     index;
         int     limit;
     public:
@@ -22,6 +22,8 @@ class PhoneBook
         void    add_function();
         void    search_function();
         void    show_contacts();
+        int     getting_option(std::string option);
+        //int     is_phonebook_empty();
 };
 
 #endif

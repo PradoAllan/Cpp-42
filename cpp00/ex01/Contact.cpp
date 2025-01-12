@@ -2,36 +2,61 @@
 
 Contact::Contact(void)
 {
-    std::cout << "Constructor got called." << std::endl;
+    std::cout << "Contact Constructor got called." << std::endl;
 }
 
 Contact::~Contact(void)
 {
-    std::cout << "Desctructor got called." << std::endl;
+    std::cout << "Contact Desctructor got called." << std::endl;
 }
 
-void    Contact::set_firstName(std::string firstName)
+void    Contact::set_firstName(void)
 {
+    std::string firstName;
+
+    std::cout << std::endl;
+    std::cout << "Type your first name: ";
+    std::cin >> firstName;
     this->firstName = firstName;
 }
 
-void    Contact::set_lastName(std::string lastName)
+void    Contact::set_lastName(void)
 {
+    std::string lastName;
+
+    std::cout << std::endl;
+    std::cout << "Type your last name: ";
+    std::cin >> lastName;
     this->lastName = lastName;
 }
 
-void    Contact::set_nickname(std::string nickname)
+void    Contact::set_nickname(void)
 {
+    std::string nickname;
+
+    std::cout << std::endl;
+    std::cout << "Type your nickname: ";
+    std::cin >> nickname;
     this->nickname = nickname;
 }
 
-void    Contact::set_darkestSecret(std::string darkestSecret)
+void    Contact::set_darkestSecret(void)
 {
+    std::string darkestSecret;
+
+    std::cout << std::endl;
+    std::cout << "Type your darkest secret: ";
+    std::cin >> darkestSecret;
     this->darkestSecret = darkestSecret;
 }
 
-void    Contact::set_phoneNumber(std::string phoneNumber)
+void    Contact::set_phoneNumber(void)
 {
+    std::string phoneNumber;
+
+    std::cout << std::endl;
+    std::cout << "Type your phone number: ";
+    std::cin >> phoneNumber;
     this->phoneNumber = phoneNumber;
 }
 
