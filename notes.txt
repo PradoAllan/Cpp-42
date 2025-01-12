@@ -32,7 +32,13 @@ STDIO.
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
 CLASS AND INSTANCES.
-    
+    -> Uma nova classe deve ser declarada em um arquivo .hpp. A implementacao dos deus métodos devem ser
+    feitas no arquivo .cpp. Isto é, se temos uma classe chamada "Carros.hpp", todos os seus atributos e
+    protótipos dos métodos devem estar declarados neste arquivo. Em um outro arquivo chamado Carros.cpp
+    vamos implementar seus métodos, sejam os construtores/destrutores ou outros métodos.
+        -> Então:
+            NomeDaClasse.hpp = Declaracao dos atributos e protótipos dos métodos.
+            NomeDaClasse.cpp = implementacao dos métodos.
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
