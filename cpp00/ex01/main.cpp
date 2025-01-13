@@ -8,8 +8,8 @@ int main(void)
 
     do
     {
-        std::cout << std::endl;
-        std::cout << "You have 3 options." << std::endl << "ADD, SEARCH or EXIT" << std::endl;
+        std::cout << "---------------------------------------------------------" << std::endl;
+        std::cout << "You have 3 options: ADD, SEARCH or EXIT" << std::endl;
         std::cout << "Type your option: ";
         std::cin >> option;
         status = list.getting_option(option);

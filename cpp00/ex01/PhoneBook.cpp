@@ -4,11 +4,9 @@ PhoneBook::PhoneBook()
 {
     this->set_limit(3);
     this->set_index(0);
-    std::cout << "Phonebook Constructor got called." << std::endl;
 }
 PhoneBook::~PhoneBook()
 {
-    std::cout << "Phonebook Destructor got called." << std::endl;
 }
 
 void    PhoneBook::set_index(int index)
@@ -43,7 +41,6 @@ void    PhoneBook::add_function()
     contacts[i].set_darkestSecret();
     contacts[i].set_phoneNumber();
     set_index(i + 1);
-    std::cout << "Add function was called." << std::endl;
 }
 
 void    PhoneBook::search_function()
@@ -61,19 +58,23 @@ void    PhoneBook::search_function()
         if (info >= limit || info < 0)
             std::cout << "INDEX OUT OF RANGE..." << std::endl;
     } while(info >= limit || info < 0);
-    contacts[info].show_contact();
-    std::cout << "Search function was called." << std::endl;
+    contacts[info].show_contact_full();
 }
 
 void    PhoneBook::show_contacts()
 {
     int limit = get_limit();
 
-    std::cout << "Show contacts was called." << std::endl;
+    std::cout << std::setw(10) << "Index" << "|";
+    std::cout << std::setw(10) << "First Name" << "|";
+    std::cout << std::setw(10) << "Last Name" << "|";
+    std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
     for (int i = 0; i < limit; i++)
     {
-        std::cout << i;
-        contacts[i].show_contact();
+		std::cout << std::setw(10) << i << "|";
+		this->contacts[i].show_contact();
+        // std::cout << i;
+        // contacts[i].show_contact();
     }
 }
 
@@ -95,12 +96,30 @@ int    PhoneBook::getting_option(std::string option)
     return (1);
 }
 
-// int     PhoneBook::is_phonebook_empty(void)
+// void	PhoneBook::displayContacts(void) const
 // {
-//     if (get_index() == 0)
-//     {
-//         std::cout << "There are no contacts in the phonebook... " << std::endl;
-//         return (1);
-//     }
-//     return (0);
+// 	std::cout << std::setw(10) << "Index" << "|";
+// 	std::cout << std::setw(10) << "First Name" << "|";
+// 	std::cout << std::setw(10) << "Last Name" << "|";
+// 	std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
+// 	for (int i = 0; i < 8; i++)
+// 	{
+// 		std::cout << std::setw(10) << i << "|";
+// 		this->_contacts[i].displayShort();
+// 	}
+// }
+
+// void	PhoneBook::searchContact(void) const
+// {
+// 	this->displayContacts();
+
+// 	std::string index;
+// 	do
+// 	{
+// 		std::cout << "Enter the index of the contact you want to see: ";
+// 		std::getline(std::cin, index);
+// 	}	while (!std::cin.eof() && (index.empty() || index.size() != 1 || index[0] < '0' || index[0] > '7'));
+
+// 	int i = index[0] - '0';
+// 	this->_contacts[i].displayFull();
 // }

@@ -30,6 +30,8 @@ class Contact
         std::string get_phoneNumber();
 
         void    show_contact();
+        void    show_contact_full();
+        std::string verifyLength(const std::string &field);
 };
 
 #endif
