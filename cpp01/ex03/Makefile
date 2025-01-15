@@ -1,6 +1,6 @@
 NAME = violence
 
-COMPILER = c++
+COMPILER = g++
 
 FLAGS = -Wall -Werror -Wextra
 

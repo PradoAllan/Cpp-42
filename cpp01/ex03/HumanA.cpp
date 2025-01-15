@@ -1,15 +1,11 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA(void)
-{
 
-}
-
-HumanA::HumanA(std::string name, Weapon &ref)
-{
+HumanA::HumanA(std::string name, Weapon &ref): name(name), weapon(ref) {}
+/* {
     setName(name);
-    this->weapon = ref;
-}
+    this->weapon = &ref;
+} */
 
 HumanA::~HumanA(void)
 {
