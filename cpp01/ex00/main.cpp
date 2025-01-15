@@ -3,6 +3,7 @@
 int main(void)
 {
     Zombie me;
+    //Zombie *newMe = Zombie::newZombie("prado");
     Zombie *newMe = newZombie("prado");
 
     me.set_name();
