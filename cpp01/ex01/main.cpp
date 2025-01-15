@@ -8,8 +8,6 @@ int main(void)
     horde = zombieHorde(qtd, "allan");
     for (int i = 0; i < qtd; i++)
         horde[i].announce();
-    delete(horde);
-    // for (int i = 0; i < qtd; i++)
-    //     delete(horde[i]);
+    delete[] horde;
     return (1);
 }
