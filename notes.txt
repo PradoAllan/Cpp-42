@@ -43,3 +43,24 @@ CLASS AND INSTANCES.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+REFERENCE AND POINTERS IN CPP.
+    -> links:
+        https://www.youtube.com/watch?v=sxHng1iufQE
+        |
+        ---> "In short: Pointers and references can be used to refer to data in memory, 
+        without copying the data to a new variable. That is efficient. 
+        While pointers can arbitrarily be changed to point to any memory addresses and need 
+        a dereferentiation in order to read the value, references do refer to a fixed location 
+        in memory and behave like normal variables (do not need dereferentiation),  
+        when one wants to read their value. 
+        However, since no data is copied from one var to another in either case, 
+        changes made to these memory locations will be present instantly for pointers and references."
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
