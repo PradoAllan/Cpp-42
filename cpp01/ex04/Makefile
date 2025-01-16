@@ -1,4 +1,4 @@
-NAME = violence
+NAME = sed_is_for_losers
 
 COMPILER = c++
 
@@ -7,9 +7,7 @@ FLAGS = -Wall -Werror -Wextra
 CPP_FLAGS = -std=c++98
 
 SRC =	main.cpp \
-		Weapon.cpp \
-		HumanA.cpp \
-		HumanB.cpp
+		utils.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
