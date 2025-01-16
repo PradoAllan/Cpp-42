@@ -2,11 +2,31 @@ Links para documentação:
     https://cplusplus.com/reference/iostream/
     https://cplusplus.com/doc/oldtutorial/
 
+O QUE VEMOS NAS LISTAS DE CPP?
+    00 - introdução a c++, manipulação de string, input/output
+    01 - introdução a classes simples, referencia e mais coisas basicas de c++
+    02 - ortodoxo canonical form, overload e operator overload
+    03 - herança
+    04 - metodos virtuais, virtuais puros, classe abstrata e interface
+    05 - exception
+    06 - type casting
+    07 - templates
+    08 - <algorithm> header
+    09 - containers
 
 Notas sobre os vídeos de C++ da intra.
     -> TÓPICOS ABORDADOS:
         STDIO STREAMS
         CLASS AND INSTANCES
+
+Links gerais que podem me ajudar nas próximas listas:
+    O modulo 02 inteiro é sobre número de ponto-fixo. 
+    Aqui dois vídeos muito bons que me ajudaram a entender o conceito:
+        https://youtu.be/ZMsrZvBmQnU
+    e esse aqui
+        https://youtu.be/hTylkIGVnuc
+    Essa é a versão em texto do segundo vídeo:
+        https://vanhunteradams.com/FixedPoint/FixedPoint.html
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
