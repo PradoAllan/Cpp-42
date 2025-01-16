@@ -4,9 +4,10 @@
 # include <string.h>
 # include <fstream>
 
-
 # define NO_MESSAGE "No error message."
 # define WRONG_N_PARAMS "Wrong number of params."
 # define FILE_OPEN_FAIL "Could not open the file."
 
 void    errorsDealer(std::string message);
+void    replaceContent(std::string &s, char *s1, char *s2);
+int     fileDealer(char **av);
