@@ -42,3 +42,8 @@ jobs:
           cd cpp01
           cd ex04
           make workflow
+      - name: Compiling cpp01/ex05 files
+        run: |
+          cd cpp01
+          cd ex05
+          make workflow
