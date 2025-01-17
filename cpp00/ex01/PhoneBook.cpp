@@ -2,7 +2,7 @@
 
 PhoneBook::PhoneBook()
 {
-    this->set_limit(3);
+    this->set_limit(8);
     this->set_index(0);
 }
 PhoneBook::~PhoneBook()
