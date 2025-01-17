@@ -45,8 +45,9 @@ void    PhoneBook::add_function()
 
 void    PhoneBook::search_function()
 {
-    int info;
-    int limit = get_limit();
+    std::string end;
+    int         info;
+    int         limit = get_limit();
 
     show_contacts();
     do
@@ -55,6 +56,7 @@ void    PhoneBook::search_function()
         std::cout << "Which contact do you want to see more infos?" << std::endl;
         std::cout << "Type it's index: ";
         std::cin >> info;
+        std::getline(std::cin, end);
         if (info >= limit || info < 0)
             std::cout << "INDEX OUT OF RANGE..." << std::endl;
     } while(info >= limit || info < 0);
@@ -73,8 +75,6 @@ void    PhoneBook::show_contacts()
     {
 		std::cout << std::setw(10) << i << "|";
 		this->contacts[i].show_contact();
-        // std::cout << i;
-        // contacts[i].show_contact();
     }
 }
 
@@ -95,31 +95,3 @@ int    PhoneBook::getting_option(std::string option)
         std::cout << "Wrong option..." << std::endl;
     return (1);
 }
-
-// void	PhoneBook::displayContacts(void) const
-// {
-// 	std::cout << std::setw(10) << "Index" << "|";
-// 	std::cout << std::setw(10) << "First Name" << "|";
-// 	std::cout << std::setw(10) << "Last Name" << "|";
-// 	std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
-// 	for (int i = 0; i < 8; i++)
-// 	{
-// 		std::cout << std::setw(10) << i << "|";
-// 		this->_contacts[i].displayShort();
-// 	}
-// }
-
-// void	PhoneBook::searchContact(void) const
-// {
-// 	this->displayContacts();
-
-// 	std::string index;
-// 	do
-// 	{
-// 		std::cout << "Enter the index of the contact you want to see: ";
-// 		std::getline(std::cin, index);
-// 	}	while (!std::cin.eof() && (index.empty() || index.size() != 1 || index[0] < '0' || index[0] > '7'));
-
-// 	int i = index[0] - '0';
-// 	this->_contacts[i].displayFull();
-// }

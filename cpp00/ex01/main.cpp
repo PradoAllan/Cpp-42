@@ -11,7 +11,7 @@ int main(void)
         std::cout << "---------------------------------------------------------" << std::endl;
         std::cout << "You have 3 options: ADD, SEARCH or EXIT" << std::endl;
         std::cout << "Type your option: ";
-        std::cin >> option;
+        std::getline(std::cin, option);
         status = list.getting_option(option);
     } while (status);
     return (1);
