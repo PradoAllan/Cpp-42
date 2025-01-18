@@ -79,7 +79,88 @@ REFERENCE AND POINTERS IN CPP.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+MEMBER ATTRIBUTES AND MEMBER FUNCTIONS.
+    -> Quando implementamos uma nova classe e criamos seus atributos e métodos, esses atributos
+    e métodos são chamados de "Member"/"Membros" desta classe. Isto é, sempre que instanciamos
+    esta nova classe, criamos um objeto que possuí esses atributos e métodos membros da classe
+    do qual foi instanciado.
 
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+THIS.
+    -> Basicamente é uma forma de referenciar a própria instância. Isto é, quando um objeto chama um
+    método, o método pode acessar os atributos e métodos pertencentes àquele objeto a partir da key-word
+    "this->".
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+INITIALIZATION LIST.
+    Good link: https://www.geeksforgeeks.org/when-do-we-use-initializer-list-in-c/
+
+    -> Basicamente, usar a "initializer list" ou lista de inicialização, é a forma mais correta de
+    implementar os construtores das classes. No link acima tem várias explicações dos motivos.
+    Mas, para resumir, evita o problema de conversões de estreitamento e comportamento inesperado. 
+    Ela fornece verificação de tipo mais rigorosa durante a inicialização e previne conversões 
+    de estreitamento em potencial. 
+        Em outras palavras, é uma boa pratica que garante a não ocorrência de erros inesperados.
+
+    -> Declaração da "parameter initialization":
+        ClassName::ClassName(string nome, int idade)
+        {
+            this->nome = nome;
+            this->idade = idade;
+        }
+    
+    -> Declaração da "initialization list"
+        ClassName::ClassName(string nome, int idade): nome(nome), idade(idade) {}
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+CONST.
+    Good link: https://www.geeksforgeeks.org/const-keyword-in-cpp/
+    
+    -> O uso de constantes na programação é algo muito importante no mundo. Ainda não é algo que nós,
+    da 42, usamos da melhor maneira, pois é meio limitado para nós. Mas, faz toda diferença no longo
+    prazo. Acaba sendo um divisor de águas importante para os programadores.
+
+    -> O uso do "CONST" é feito tanto em atributos quanto em métodos:
+        -> Const nos atributos, assim como em variavies no geral, é uma forma de garantir que aquele
+        atributo NUNCA vai mudar durante a execução do programa.
+
+        -> Const nos métodos, é uma forma de mostrar para o compilador que aquele médoto com "const"
+        explícito antes do ';' NÃO vai alterar a instância chamadora. Isto é, aquele método não vai 
+        alterar o estado do objeto que chamou o método.
+            |
+            |
+            ---> void metodoTest(void) const;
+                    |
+                    |
+                    ---> void Classe::metodoTest(void) const {
+                            "Não vai haver nenhuma alteração no estado daquela instância"
+                            this->name = "Allan";
+                                |
+                                |
+                                ---> "Isso não é aceito pelo compilador"
+                    } 
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
