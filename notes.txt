@@ -121,7 +121,7 @@ INITIALIZATION LIST.
 ---------------------------------------------------------------------------------------------------------------------------
 CONST.
     Good link: https://www.geeksforgeeks.org/const-keyword-in-cpp/
-    
+
     -> O uso de constantes na programação é algo muito importante no mundo. Ainda não é algo que nós,
     da 42, usamos da melhor maneira, pois é meio limitado para nós. Mas, faz toda diferença no longo
     prazo. Acaba sendo um divisor de águas importante para os programadores.
@@ -149,15 +149,44 @@ CONST.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+PUBLIC AND PRIVATE.
+    -> Basicamente, é a forma de "proteger" ou não os atributos e métodos da classe. Isto é, se algum 
+    atributo está setado como "private:", ele poderá ser acessado somente dentro da própria classe. 
+        EX:
+            "Se temos um atributo ou método private, uma instância dessa classe só pode acessa-lo 
+            através de algum método public."
+     -> Dessa forma garantimos que o usuário só acessaria o que realmente importa.
+
+     -> Uma convenção é declarar o nome dos atributos ou médotos que são "private" com o '_' no 
+     início.
+        EX:
+            class NomeDaClasse
+            {
+                private:
+                    const int _cpf;
+                    void    _setCpf(void) const;
+                public:
+                    ...
+            }
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+CLASS VS STRUCT.
+    -> Struct em c++ tem a mesma sintaxe de uma classe. No entanto, o escopo de uma classe é private
+    por padrão. O escopo de uma struct é public por padrão.
+
+    -> Em c++ é melhor usar classe, pois você consegue manipular ela de uma melhor maneira. Isto é,
+    adicionar member functions para alterar o seu estado.
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
-
+ACCESSORS.
+    -> Getters e Setters são, de forma resumida, uma maneira de controlar o acesso e o uso do usuário
+    à nossa classe. Isto é, a forma que ele vai manipular os atributos da instância vai ser definida
+    por nós, programadores, nos métodos "Getters e Setters".
+    
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
