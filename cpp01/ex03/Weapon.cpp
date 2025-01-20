@@ -22,7 +22,7 @@ void    Weapon::setType(std::string type)
 }
 
 // member function that returns a const reference to type.
-const std::string   Weapon::getType(void)
+std::string   Weapon::getType(void) const
 {
     const std::string ref = this->type;
     return (ref);
