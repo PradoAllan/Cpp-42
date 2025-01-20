@@ -63,22 +63,6 @@ CLASS AND INSTANCES.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
-REFERENCE AND POINTERS IN CPP.
-    -> links:
-        https://www.youtube.com/watch?v=sxHng1iufQE
-        |
-        ---> "In short: Pointers and references can be used to refer to data in memory, 
-        without copying the data to a new variable. That is efficient. 
-        While pointers can arbitrarily be changed to point to any memory addresses and need 
-        a dereferentiation in order to read the value, references do refer to a fixed location 
-        in memory and behave like normal variables (do not need dereferentiation),  
-        when one wants to read their value. 
-        However, since no data is copied from one var to another in either case, 
-        changes made to these memory locations will be present instantly for pointers and references."
-
----------------------------------------------------------------------------------------------------------------------------
-###########################################################################################################################
----------------------------------------------------------------------------------------------------------------------------
 MEMBER ATTRIBUTES AND MEMBER FUNCTIONS.
     -> Quando implementamos uma nova classe e criamos seus atributos e métodos, esses atributos
     e métodos são chamados de "Member"/"Membros" desta classe. Isto é, sempre que instanciamos
@@ -190,6 +174,111 @@ ACCESSORS.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+COMPARISON.
+    -> Pelo que eu entendi, funciona igual ao C mesmo.
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+NON MEMBER ATTRIBUTES AND NON MEMBER FUNCTIONS.
+    -> São médotos e atributos que não precisam de uma instância para serem acessados. Isto é, não
+    precisam necessáriamente estar no escopo da classe em si, fazendo que não sejam "Mebers" da classe.
+
+    -> Para declarar um atributo ou método como "NON MEMBER" colocamos o "STATIC" na frente da declaração.
+    Mesmo que eles sejam static, a declaração do método static ainda é feita no arquivo .cpp da classe.
+        EX:
+            class ClassName
+            {
+                private:
+                    static float _pi; -> para inicializar é ClassName::_pi = 3.1415 no .cpp da classe
+                    ...
+                public:
+                    static float getPi(void); -> implementacao feita no .cpp da classe
+                    ...
+            }
+
+            "Dessa forma, o atributo "pi" e o método "getPi" podem ser acessados sem precisar de uma
+            instância da classe ClassName."
+                |
+                |
+                ---> Sintaxe: "ClassName::getPi()"
+            
+            "No caso do NON MEMBER ATTRIBUTE, por estar como private, precisa de um getter para
+            ser acessado."
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+POINTERS TO MEMBER.
+    -> 
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+NEW AND DELETE.
+    -> Basicamente são os *alloc() e o free() mas em c++. O new é o equivalente ao alloc e o delete ao free.
+
+    -> A grande diferenca é que tanto o new quanto o delete conseguem chamar o construtor e o destrutor de
+    classes que nós criamos. O alloc e o free não conseguem "achar" as classes que criamos, consequentemente,
+    não chamam os construtores e destrutores.
+
+    -> Sintaxe:
+        ClassName   *teste = new ClassName("allan");  -> "Estamos alocando dinamicamente uma instancia de ClassName."
+
+        delete teste;  -> "Estamos deletando, limpando, a memoria alocada pelo ptr teste do tipo
+                            ClassName."
+
+        ClassName   *teste = new ClassName[42];  -> "Estamos alocando um array do tipo ClassName de 
+                                                        tamanho 42."
+        delete [] teste;  -> "Estamos limpando, deletando, a memoria alocada pelo ptr teste do tipo
+                                ClassName."
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+REFERENCE AND POINTERS IN CPP.
+    -> links:
+        https://www.youtube.com/watch?v=sxHng1iufQE
+        |
+        ---> "In short: Pointers and references can be used to refer to data in memory, 
+        without copying the data to a new variable. That is efficient. 
+        While pointers can arbitrarily be changed to point to any memory addresses and need 
+        a dereferentiation in order to read the value, references do refer to a fixed location 
+        in memory and behave like normal variables (do not need dereferentiation),  
+        when one wants to read their value. 
+        However, since no data is copied from one var to another in either case, 
+        changes made to these memory locations will be present instantly for pointers and references."
+
+    -> Basicamente é um ponteiro const e esta sempre "dereferentiate" desrreferenciado e nunca é void.
+    Isto é, ele é um clone de uma variável. Possuí o mesmo endereço e valor da variável "clonada" e 
+    consegue alterar o valor da mesma através do clone.
+
+    -> Não pode mudar de referencia. Isto é, uma vez referenciado a uma variavel, vai SEMPRE estar
+    referenciado àquela variavel.
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+FILESTREAMS.
+    -> C++ jeito de lidar com filedescriptors. Isto é, como ler de um fd, como escrever em outro e 
+    como criar um novo arquivo. Basicamente é a forma de manipular filedescriptors em c++.
+
+    <fstream> -> Header que possui funçoes para manipular fds.
+
+    std::ifstream -> 'i' para input.
+    std::ofstream -> 'o' para output.
+
+    Link for its reference: https://cplusplus.com/reference/fstream/
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
