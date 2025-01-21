@@ -273,12 +273,28 @@ FILESTREAMS.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+ADHOC POLYMORPHISM.
+    -> Também conhecido como "function overloading ou overload de função". É basicamente uma maneira de
+    declararmos duas ou mais functions com o mesmo nome porém com parâmetros diferentes. Isto é, podemos
+    ter dois métodos com o mesmo nome.
+    Por ex:
+        ClassName(void) e ClassName(std::string name);
 
+        void ClassName::setName(void) e void ClassName::setName(std::string name);
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+ORTHODOX CANONICAL FORM.
+    -> Basicamente, parece ser uma forma padrão para escrever classes. 
+        A default constructor: "used internally to initialize objects and data members when 
+                                no other value is available."
 
+        A copy constructor: "used in the implementation of call-by-value parameters.""
+
+        An assignment operator: "used to assign one value to another."
+        
+        A destructor: "Invoked when an object is deleted."
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
