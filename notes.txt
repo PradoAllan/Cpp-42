@@ -286,13 +286,18 @@ ADHOC POLYMORPHISM.
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
 ORTHODOX CANONICAL FORM.
-    -> Basicamente, parece ser uma forma padrão para escrever classes. 
+    -> Basicamente, parece ser uma forma padrão para escrever classes. Sendo considerado apenas uma
+    boa prática. 
+
         A default constructor: "used internally to initialize objects and data members when 
                                 no other value is available."
 
-        A copy constructor: "used in the implementation of call-by-value parameters.""
+        A copy constructor: "used in the implementation of call-by-value parameters."
+            -> É usado para copiar uma instância de uma classe. Isto é, o construtor receberá uma instância
+            já existente e a nova instância recebera essa já existente, criando uma cópia.
 
         An assignment operator: "used to assign one value to another."
+            -> Mesma ideia do "copy constructor", com a diferença de que ambas instancias já são existentes.
         
         A destructor: "Invoked when an object is deleted."
 
