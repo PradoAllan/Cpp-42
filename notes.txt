@@ -305,7 +305,44 @@ ORTHODOX CANONICAL FORM.
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
 FIXED POINT NUMBERS.
-    -> 
+    -> Pelo que eu entendi, basicamente é uma forma de "corrigir" o problema que temos com
+    flaoting point varibles. Isto é, para termos uma precisão das casas decimais (fracionais)
+    o float não é suficiente, demandando assim, a implementacao dos fixed points values.
+
+    -> Esse link tem as formulas abaixo com outras explicações importantes:
+    https://people.ece.cornell.edu/land/courses/ece4760/PIC32/index_fixed_point.html
+
+    -> Para fazermos uma multiplicação de dois fixed point, temos essa formula:
+        ((fix))((((singned long long a))*((signed long long b)) >> 15))
+
+        "Basicamente castamos o valor para signed long long para termos 64 bits
+        de tamanho, depois disso fazer uma operação de bitwise 15 para a direita.
+        Isto é, jogamos o valor todo 15 casas para a direita para caber tudo depois
+        nos 32 bits de tamanho do fixed point."
+
+    -> Para transformarmos signed int to fix, temos essa formula:
+        ((fix))((a << 15))
+        
+        "O valor 15 pode variar dependendo da posição que desejamos incluir o decimal.
+        Isto é, o '.'"
+
+    -> Para transformarmos fix to a signed int, temos essa formula:
+        ((int))((a >> 15))
+
+        "O valor 15 pode variar dependendo da posição que desejamos incluir o decimal.
+        Issto é, o '.'"
+
+    -> Para transformarmos floating point value to a fixed point, temos a formula:
+        ((fix))(a * 32768.0)
+
+    -> Para transformarmos fixed point to a floating point, temos a formula:
+        ((float)(a) / 32768.0)
+
+    -> Para fazermos uma divisao temos a seguinte formula:
+        ((fix))((((signed long long)(a) << 15 / (b))))
+
+    -> Para fazermos a raiz quadrada temos a formula:
+        (float2fix(sqrt(fix2float(a))))
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
