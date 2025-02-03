@@ -1,5 +1,7 @@
 #pragma once
 
+# include <iostream>
+
 class Fixed
 {
     private:
@@ -12,8 +14,8 @@ class Fixed
         Fixed(int const num);
         Fixed(float const num);
 
-        float   toFloat(void) const;
-        int     toInt(void) const;
+        float   toFloat(void) const;            //converts the fixed-point value to a floating-point value.
+        int     toInt(void) const;              //converts the fixed-point value to an integer value.
         int     getRawBits(void) const;
         void    setRawBits(int const raw);
 
