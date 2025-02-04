@@ -72,16 +72,50 @@ std::ostream &operator<<(std::ostream & o, Fixed const & i)
     return (o);
 }
 
+// Fixed &operator>(Fixed const & rhs);
+bool &Fixed::operator>(Fixed const & rhs)
+{
+    if (getRawBits() > rhs.getRawBits())
+        return (true);
+    return (false);
+}
 
-// int Fixed::toInt( void ) const //| Getter INT.
-// {
-// 	//| FLOAT -> INT.
-// 	return (this->_value >> this->_fractionalBits);
-// }
+// Fixed &operator<(Fixed const & rhs);
+bool &Fixed::operator<(Fixed const & rhs)
+{
+    if (getRawBits() < rhs.getRawBits())
+        return (true);
+    return (false);
+}
 
-// float Fixed::toFloat( void ) const //| Getter FLOAT.
-// {
-// 	//| INT -> FLOAT.
-// 	return ((float)this->_value / (1 << this->_fractionalBits));
-// }
+// Fixed &operator<=(Fixed const & rhs);
+bool &Fixed::operator<=(Fixed const & rhs)
+{
+    if (getRawBits() <= rhs.getRawBits())
+        return (true);
+    return (false);
+}
 
+// Fixed &operator>=(Fixed const & rhs);
+bool &Fixed::operator>=(Fixed const & rhs)
+{
+    if (getRawBits() >= rhs.getRawBits())
+        return (true);
+    return (false);
+}
+
+// Fixed &operator==(Fixed const & rhs);
+bool &Fixed::operator==(Fixed const & rhs)
+{
+    if (getRawBits() == rhs.getRawBits())
+        return (true);
+    return (false);
+}
+
+// Fixed &operator!=(Fixed const & rhs);
+bool &Fixed::operator!=(Fixed const & rhs)
+{
+    if (getRawBits() != rhs.getRawBits())
+        return (true);
+    return (false);
+}
