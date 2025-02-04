@@ -1,6 +1,7 @@
 #pragma once
 
 # include <iostream>
+# include <cmath>
 
 class Fixed
 {
@@ -21,6 +22,8 @@ class Fixed
 
         Fixed &operator=(Fixed const & rhs);    //canonical
 };
+
+std::ostream &  operator<<(std::ostream & o, Fixed const & i);
 
 //An overload of the insertion («) operator that inserts a floating-point representation
 //of the fixed-point number into the output stream object passed as parameter
