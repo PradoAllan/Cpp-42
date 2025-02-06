@@ -10,7 +10,7 @@ class Fixed
         static const int    _bits = 8;
     public:
         Fixed(void);                            //canonical
-        Fixed(Fixed const & src);               //canonical
+        Fixed(const Fixed & src);               //canonical
         ~Fixed(void);                           //canonical
         Fixed(int const num);
         Fixed(float const num);
@@ -20,10 +20,10 @@ class Fixed
         int     getRawBits(void) const;
         void    setRawBits(int const raw);
 
-        Fixed &operator=(Fixed const & rhs);    //canonical
+        Fixed &operator=(const Fixed & rhs);    //canonical
 };
 
-std::ostream &  operator<<(std::ostream & o, Fixed const & i);
+std::ostream &  operator<<(std::ostream & o, const Fixed & i);
 
 //An overload of the insertion («) operator that inserts a floating-point representation
 //of the fixed-point number into the output stream object passed as parameter

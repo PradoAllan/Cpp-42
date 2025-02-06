@@ -9,11 +9,11 @@ class   Fixed
         static const int    _literal = 8;
     public:
         Fixed(void);                            //Canonical
-        Fixed(Fixed const & src);               //Canonical
+        Fixed(const Fixed & src);               //Canonical
         ~Fixed(void);                           //Canonical
 
         int     getRawBits(void) const;
         void    setRawBits(int const raw);
 
-        Fixed &operator=(Fixed const & rhs);    //Canonical
+        Fixed &operator=(const Fixed & rhs);    //Canonical
 };
