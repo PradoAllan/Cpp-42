@@ -301,6 +301,41 @@ ORTHODOX CANONICAL FORM.
         
         A destructor: "Invoked when an object is deleted."
 
+EXEMPLO DE CLASSE NA CANONICAL FORM.
+
+    public:
+        Fixed(void);                            //Canonical
+        Fixed(const Fixed & src);               //Canonical
+        ~Fixed(void);                           //Canonical
+        Fixed &operator=(const Fixed & rhs);    //Canonical
+
+IMPLEMENTACAO.
+
+    Fixed::Fixed(void): _fixed(0)
+    {
+        std::cout << "Default constructor called" << std::endl;
+    }
+
+    Fixed::Fixed(const Fixed & src)
+    {
+        std::cout << "Copy constructor called" << std::endl;
+        *this = src;
+    }
+
+    Fixed::~Fixed(void)
+    {
+        std::cout << "Destructor called" << std::endl;
+    }
+
+    Fixed &Fixed::operator=(const Fixed & rhs)
+    {
+        std::cout << "Copy assignment operator called" << std::endl;
+        if (this != &rhs)
+            setRawBits(rhs.getRawBits());
+        //this->_fixed = rhs.getRawBits();
+        return (*this);
+    }
+
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
@@ -347,7 +382,8 @@ FIXED POINT NUMBERS.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
-
+INHERITANCE IN C++.
+    ->
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
