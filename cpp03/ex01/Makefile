@@ -1,4 +1,4 @@
-NAME = 
+NAME = serena
 
 COMPILER = c++
 
@@ -6,7 +6,9 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	main.cpp \
+		ClapTrap.cpp \
+		ScavTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
