@@ -4,11 +4,16 @@
 
 class ClapTrap
 {
-    private:
-        const std::string   _name;
-        int                 _hitPoints;
-        int                 _energyPoints;
-        int                 _attackDamage;
+    // private:
+    //     const std::string   _name;
+    //     int                 _hitPoints;
+    //     int                 _energyPoints;
+    //     int                 _attackDamage;
+    protected:
+    const std::string   _name;
+    int                 _hitPoints;
+    int                 _energyPoints;
+    int                 _attackDamage;
     public:
         ClapTrap(void); // cannonical
         ClapTrap(const ClapTrap &src); // cannonical
