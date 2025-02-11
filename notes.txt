@@ -383,7 +383,81 @@ FIXED POINT NUMBERS.
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
 INHERITANCE IN C++.
-    ->
+    -> Basicamente, a herança é uma forma de compartilhar o código já escrito. Isto é, uma forma 
+    de evitar escrever código mais de uma vez.
+
+    -> Então, ao declararmos uma classe ANIMAL que possui uma member function EAT(), e queremos
+    criar também, uma classe apenas de DOGS:
+    EX:
+
+        class animal
+        {
+            protected:
+                std::string type;
+            private:
+                std::string name;
+            public:
+                void eat(void);
+                ...
+        }
+
+        class dog
+        {
+            private:
+                std::string name;
+                std::string owner;
+            public:
+                void play(void);
+                void eat(void);
+                ...
+        }
+
+    -> No caso acima, a classe dog possui a mesma funcionalidade da classe animal. Entao, estamos
+    escrevendo o "mesmo código" mais de uma vez.
+
+    -> Podemos fazer dessa maneira:
+
+        class animal
+        {
+            private:
+                std::string name;
+            public:
+                void eat(void);
+                ...
+        }
+
+        class dog : public animal
+        {
+            private:
+                std::owner;
+            public:
+                void play(void);
+                ...
+        }
+
+    -> Se instanciarmos um objeto de dog, ele terá acesso a todos os public atributos da classe animal.
+    Pois a classe dog herda da classe animal. Entao:
+
+        int main(void)
+        {
+            dog auau("totó", "allan"); -> construtor(nome do cao, nome do dono);
+
+            auau.play(); -> auau tem acesso ao método play() pois foi declarado na classe dog.
+            auau.eat(); -> auau também tem acesso ao metodo eat() pois a classe dog herda da classe animal.
+            std::cout << auau.name std::endl; -> auau NAO consegue acessar o atributo name da classe animal 
+                                                    pois esta setado como private. Entao so temos acesso
+                                                    atraves de um metodo public: ou se ele fosse protected:
+            std::cout << auau.type std::endl; -> auau TEM acesso ao atributo type pois ele esta setado como protected.
+        }
+
+    -> Então, sempre que criarmos uma classe B que herda de outra classe A, TUDO que, dentro da classe A,
+    tiver setado como PUBLIC: a classe B tem acesso.
+
+    -> TUDO que estiver setado como PRIVATE: dentro da classe A, a classe B NÃO tem acesso. Só consegue acessar
+    se tiver algum método PUBLIC: que acessa o atributo PRIVATE:
+
+    -> TUDO que estiver setado como PROTECTED: dentro da classe A, a classe B TEM acesso.
+
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
