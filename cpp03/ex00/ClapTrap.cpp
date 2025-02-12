@@ -8,28 +8,28 @@
 
 ClapTrap::ClapTrap(void): _name(" "), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-    std::cout << "Constructor got called." << std::endl;
+    std::cout << "ClapTrap Constructor got called." << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-    std::cout << "Constructor got called." << std::endl;
+    std::cout << "ClapTrap Constructor got called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src)
 {
-    std::cout << "Constructor got called." << std::endl;
+    std::cout << "ClapTrap Constructor got called." << std::endl;
     *this = src;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-    std::cout << "Destructor got called." << std::endl;
+    std::cout << "ClapTrap Destructor got called." << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
-    std::cout << "Operator = got called." << std::endl;
+    std::cout << "ClapTrap operator = got called." << std::endl;
     if (this != &src)
     {
         //this->_name = src._name;

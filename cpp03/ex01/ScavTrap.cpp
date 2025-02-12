@@ -31,13 +31,15 @@ ScavTrap::~ScavTrap(void)
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
+    std::cout << "ScavTrap operator = got called." << std::endl;
     if (this != &src)
     {
-        this->_attackDamage = src.getAttackDamage();
-        this->_energyPoints = src.getEnergyPoints();
-        this->_hitPoints = src.getHitPoints();
+        ClapTrap::operator=(src);
+        //Nesse caso o operator do ClavTrap faz exatamente isso:
+        // this->_attackDamage = src.getAttackDamage();
+        // this->_energyPoints = src.getEnergyPoints();
+        // this->_hitPoints = src.getHitPoints();
     }
-        //setter(getter);
     return (*this);
 }
 
@@ -54,5 +56,8 @@ void    ScavTrap::attack(const std::string &target)
 
 void    ScavTrap::guardGate(void) const
 {
-    std::cout << getName() << " is in Gate Keeper mode..." << std::endl;
+    if (getEnergyPoints() > 0 && getHitPoints() > 0)
+        std::cout << getName() << " is in Gate Keeper mode..." << std::endl;
+    else
+        std::cout << "Robot ScavTrap " << getName() << " has no Energy or Hit Points left..." << std::endl;
 }

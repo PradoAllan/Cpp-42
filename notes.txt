@@ -458,6 +458,41 @@ INHERITANCE IN C++.
 
     -> TUDO que estiver setado como PROTECTED: dentro da classe A, a classe B TEM acesso.
 
+CONSTRUTOR E DESTRUTOR EM CLASSES FILHAS.
+    -> Quando uma classe B herda de uma classe A, ao instanciarmos um novo objeto da classe B teremos, também, um
+    novo objeto da classe A automaticamente. Isso acontece porque temos, dentro do objeto B, uma instancia de 
+    objeto A.
+
+    -> A ordem dos construtores e destrutores é da seguinte maneira:
+        baseConstructor();
+        derivedConstructor();
+        derivedDesctructor();
+        baseDesctructor();
+
+    -> Podemos lidar com os construtores da segunte maneira tbm:
+        class base
+        {
+            pritvate:
+                int x, y;
+            public:
+                base();
+                base(int x, int y): _x(x), _y(y) {};
+                ~base();
+        }
+
+        class derived
+        {
+            public:
+                base::base;
+        }
+
+        int main(void)
+        {
+            derived test;
+            derived test(4, 2);
+        }
+
+    -> Da maneira acima, podemos 
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
