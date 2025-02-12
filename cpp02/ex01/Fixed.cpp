@@ -71,17 +71,3 @@ std::ostream &operator<<(std::ostream & o, const Fixed & i)
     o << i.toFloat();
     return (o);
 }
-
-
-// int Fixed::toInt( void ) const //| Getter INT.
-// {
-// 	//| FLOAT -> INT.
-// 	return (this->_value >> this->_fractionalBits);
-// }
-
-// float Fixed::toFloat( void ) const //| Getter FLOAT.
-// {
-// 	//| INT -> FLOAT.
-// 	return ((float)this->_value / (1 << this->_fractionalBits));
-// }
-
