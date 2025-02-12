@@ -138,7 +138,7 @@ Fixed Fixed::operator--(int)
 	return (tmp); 
 }
 
-const Fixed &Fixed::min(Fixed &src1, Fixed &src2)
+Fixed &Fixed::min(Fixed &src1, Fixed &src2)
 {
     return ((src1.getRawBits() <= src2.getRawBits()) ? src1 : src2);
 }
@@ -148,7 +148,7 @@ const Fixed &Fixed::min(const Fixed &src1, const Fixed &src2)
     return ((src1.getRawBits() <= src2.getRawBits()) ? src1 : src2);
 }
 
-const Fixed &Fixed::max(Fixed &src1, Fixed &src2)
+Fixed &Fixed::max(Fixed &src1, Fixed &src2)
 {
     return ((src1.getRawBits() >= src2.getRawBits()) ? src1 : src2);
 }

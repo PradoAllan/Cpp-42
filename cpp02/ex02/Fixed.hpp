@@ -39,9 +39,9 @@ class Fixed
         Fixed &operator--(void);
         Fixed operator--(int);
 
-        static const Fixed &min(Fixed &src1, Fixed &src2);
+        static Fixed &min(Fixed &src1, Fixed &src2);
         static const Fixed &min(const Fixed &src1, const Fixed &src2);
-        static const Fixed &max(Fixed &src1, Fixed &src2);
+        static Fixed &max(Fixed &src1, Fixed &src2);
         static const Fixed &max(const Fixed &src1, const Fixed &src2);
 
 };
