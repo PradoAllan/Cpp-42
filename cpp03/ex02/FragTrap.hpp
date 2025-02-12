@@ -4,6 +4,8 @@
 
 class   FragTrap: public ClapTrap
 {
+    private:
+    
     public:
         FragTrap(void); //canonical
         FragTrap(const FragTrap &src); //canonical

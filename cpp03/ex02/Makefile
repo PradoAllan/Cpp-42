@@ -8,7 +8,8 @@ CPP_FLAGS = -std=c++98
 
 SRC =	main.cpp \
 		ClapTrap.cpp \
-		FragTrap.cpp
+		FragTrap.cpp \
+		ScavTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
