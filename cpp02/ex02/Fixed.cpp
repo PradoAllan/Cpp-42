@@ -2,29 +2,24 @@
 
 Fixed::Fixed(void): _fixedValue(0)
 {
-    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed & src)
 {
-    std::cout << "Copy constructor called" << std::endl;
     *this = src;
 }
 
 Fixed::~Fixed(void)
 {
-    std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(int const num)
 {
-    std::cout << "Int constructor called" << std::endl;
     this->_fixedValue = num << this->_bits;
 }
 
 Fixed::Fixed(float const num)
 {
-    std::cout << "Float constructor called" << std::endl;
     this->_fixedValue = roundf(num * (1 << this->_bits));
 }
 
@@ -54,7 +49,6 @@ void    Fixed::setRawBits(int const raw)
 
 Fixed &Fixed::operator=(const Fixed & rhs)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &rhs)
         setRawBits(rhs.getRawBits());
     return (*this);
