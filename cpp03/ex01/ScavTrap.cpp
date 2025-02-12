@@ -18,7 +18,7 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
     std::cout << "New robot called " << name << " got created!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &src)
+ScavTrap::ScavTrap(const ScavTrap &src): ClapTrap(src)
 {
     *this = src;
 }
