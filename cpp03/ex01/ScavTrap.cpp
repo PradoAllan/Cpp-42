@@ -48,7 +48,7 @@ void    ScavTrap::attack(const std::string &target)
 
 void    ScavTrap::guardGate(void) const
 {
-    if (getEnergyPoints() > 0 && getHitPoints() > 0)
+    if (getHitPoints() > 0)
         std::cout << getName() << " is in Gate Keeper mode..." << std::endl;
     else
         std::cout << "Robot ScavTrap " << getName() << " has no Energy or Hit Points left..." << std::endl;
