@@ -500,6 +500,86 @@ CONSTRUTOR E DESTRUTOR EM CLASSES FILHAS.
 CLASSE ABSTRATA E VIRTUAL FUNCTIONS.
     -> Bom link de um vídeo: https://www.youtube.com/watch?v=rECcII1Mdfc
 
+    -> Basicamente, o prefixo virtual, indica ao compilador que as virtual functions serao
+    decididas no momento de execucao, nao de compilacao. Isto é, se temos:
+
+        class Base
+        {
+            private:
+
+            public:
+            ...
+                void print(void) const {std::cout << "BASE" << std::endl;}
+        }
+
+        class Derived : public Base
+        {
+            private:
+
+            public:
+            ...
+                void print(void) const {std::cout << "DERIVED" << std::endl;}
+        }
+
+        void test(const Base &object)
+        {
+            object.print();
+        }
+        
+        int main(void)
+        {
+            Base t1;
+            Derived t2;
+
+            test(t2);
+        }
+
+        -> No caso acima, o compilador decide que, qualquer objeto da classe Base, ao chamar
+        a function print, vai usar a function definida no escopo da classe Base.
+            Só que isso acaba gerando um problema para o nosso código. Pois, no exemplo acima,
+        a classe Derived é, tambem, uma classe Base, pois ela é filha da Base. Entao, ao
+        chamarmos a function test() que recebe um objeto do tipo Base, ela pode receber QUALQUER
+        classe que seja Base.
+            Dessa maneira, a function print() que será chamada vai ser a que a classe Base declarou
+        no seu escopo.
+
+        -> Para resolvermos esse problema, basta colocar o prefixo VIRTUAL na frente da function
+        print() dentro da definicao da classe Base, isto é, da clase PAI.
+
+IMPORTANTE!!!
+
+    VIRTUAL = DYNAMIC BINDING = OVERRINDING
+            |
+            |
+            ---> Dessa maneira, fazemos que o compilador defina qual vai ser a declaracao da function
+            que vai ser chamada na hora de executa-la. (DINAMICAMENTE)
+
+    STATIC BINDING = REDEFINIG
+            |
+            |
+            ---> Dessa outra maneira, o compilador decide qual declaracao vai ser chamada, na hora
+            que o codigo foi compilado.
+
+IMPORTANTE 2!!!!
+    -> PARA USARMOS O POLIMORFISMO, PRECISAMOS USAR PONTEIROS E REFERENCIAS NA DECLARAÇÃO DOS NOSSOS OBJETOS.
+    CASO CONTRARIO, MESMO QUE A DECLARACAO DE UMA FUNCTION DENTRO DE UMA BASE CLASS ESTEJA COMO VIRTUAL,
+    SERA USADO O STATIC BINDING.
+
+IMPORTANTE 3!!!
+    -> Quando queremos fazer essa atribuicao:
+    ...
+        Derived t1();
+        Base *test = &t1;
+            |
+            |
+            ---> Isso pode, pois uma instancia de derived é, necessariamente, uma instancia de Base.
+        
+        Base t2();
+        Derived *test2 = &t2;
+            |
+            |
+            ---> O oposto nao ocorre. Pois uma instancia de Base nao é uma instancia de Derived.
+
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
