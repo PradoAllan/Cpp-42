@@ -1,5 +1,6 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
@@ -20,6 +21,18 @@ int main()
     test->makeSound();
 
     // ... need to implement the WrongCat and WrongAnimal to ensure that I undestand the exercice
+    std::cout << "___--- Testing the WRONG ONES ---___" << std::endl;
+    std::cout << std::endl;
+
+    const WrongAnimal* wrongMeta = new WrongAnimal();
+    const WrongAnimal* wrongI = new WrongCat();
+
+    std::cout << wrongI->getType() << " " << std::endl;
+    std::cout << wrongMeta->getType() << " " << std::endl;
+
+    wrongI->makeSound(); //will output the cat sound!
+    wrongMeta->makeSound();
+
 
     return 0;
 }

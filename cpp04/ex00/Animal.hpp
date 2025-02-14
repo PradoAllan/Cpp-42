@@ -14,7 +14,7 @@ class Animal
 
         Animal &operator=(const Animal &src); //canonical
 
-        void    makeSound(void) const;
+        virtual void    makeSound(void) const;
 
         std::string     getType(void) const;
 };
