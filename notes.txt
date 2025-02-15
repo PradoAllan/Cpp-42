@@ -580,6 +580,12 @@ IMPORTANTE 3!!!
             |
             ---> O oposto nao ocorre. Pois uma instancia de Base nao é uma instancia de Derived.
 
+VIRTUAL FUNCTION TABLE.
+    -> Quando um destrutor é virtual, o compilador cria uma tabela de funções virtuais (vtable), 
+    que garante que a função correta seja chamada em tempo de execução. Assim, se meta for um 
+    ponteiro para uma classe derivada, o destrutor da classe derivada será chamado 
+    antes do destrutor da base.
+
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
