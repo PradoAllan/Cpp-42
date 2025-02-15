@@ -33,6 +33,15 @@ int main()
     wrongI->makeSound(); //will output the cat sound!
     wrongMeta->makeSound();
 
+    std::cout << "___--- DELETING EVERYTHING ---___" << std::endl;
+    std::cout << std::endl;
+
+    delete meta;
+    delete i;
+    delete test;
+    delete j;
+    delete wrongMeta;
+    delete wrongI;
 
     return 0;
 }

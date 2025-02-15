@@ -10,7 +10,7 @@ class Animal
         Animal(void); //canonical
         Animal(const Animal &src); //canonical
 
-        ~Animal(void); //canonical
+        virtual ~Animal(void); //canonical
 
         Animal &operator=(const Animal &src); //canonical
 
