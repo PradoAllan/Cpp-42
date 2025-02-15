@@ -1,4 +1,4 @@
-NAME = 
+NAME = dontWantToSetWorldOnFire
 
 COMPILER = c++
 
@@ -6,7 +6,13 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	main.cpp \
+		Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		Brain.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
