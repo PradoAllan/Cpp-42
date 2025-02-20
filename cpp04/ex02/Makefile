@@ -1,4 +1,4 @@
-NAME = 
+NAME = AbstractClass
 
 COMPILER = c++
 
@@ -6,7 +6,13 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	main.cpp \
+		Brain.cpp \
+		Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
