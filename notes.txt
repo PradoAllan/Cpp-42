@@ -497,7 +497,7 @@ CONSTRUTOR E DESTRUTOR EM CLASSES FILHAS.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
-CLASSE ABSTRATA E VIRTUAL FUNCTIONS.
+CLASSE BASE E VIRTUAL FUNCTIONS.
     -> Bom link de um vídeo: https://www.youtube.com/watch?v=rECcII1Mdfc
 
     -> Basicamente, o prefixo virtual, indica ao compilador que as virtual functions serao
@@ -589,7 +589,131 @@ VIRTUAL FUNCTION TABLE.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+CLASS ABSTRATA.
+    ->  O primeiro conceito importante das classes abstratas é que elas não podem ser instanciadas...
+    Isto é, não podemos ter um objeto de uma classe abstrata.
+        Mas podemos ter uma outra classe que deriva dessa classe abstrata e podemos instanciar um
+    objeto dessa nova classe.
 
+    ->  Uma 'PURE VIRTUAL FUNCTION' é uma member function que precisa ser redefinida pela
+    classe derivada. Isto é, pela classe que herda da classe abstrata.
+
+    ->  Quando uma classe tem uma 'PURE VIRTUAL FUNCTION' como member function ela se torna uma Classe abstrata.
+
+    ->  ABSTRACT BASE CLASS NAO PODEM SER INSTANCIADAS NUNCA!!!!!
+            |
+            |
+            ---> Entao, tudo que derivar desta classe abstrata, PRECISARA sobrescrever a PURE VIRTUAL FUNCTION.
+            Isto é, precisara dar o override das funções que estao como virtual.
+
+    EXEMPLO:
+        #include <iostream>
+
+        class Foo
+        {
+            public:
+                virtual void print(void) const = 0;
+        };
+
+        class Bar: public Foo
+        {
+            public:
+                virtual void print(void) const {std::cout << "Hello from Bar!" << std::endl;}
+        };
+
+        int main(void)
+        {
+            Foo test;   -> NAO FUNCIONA. Pois a class Foo é uma classe Abstrata. "O próprio compilador reclama."
+            Bar teste;  -> Funciona pois a classe Bar deriva da classe base (abstrata) e faz o override da function print().
+
+            return (0);
+        }
+
+    EXEMPLO 2:
+        #include <iostream>
+
+        class Foo
+        {
+            public:
+                virtual void print(void) const = 0;
+        };
+
+        class Bar: public Foo
+        {
+            public:
+                virtual void print(void) const {std::cout << "Hello from Bar!" << std::endl;}
+        };
+
+        class Spam: public Foo
+        {
+            public:
+                virtual void print(void) const {std::cout << "Hello from Spam!" << std::endl;}
+        };
+
+        int main(void)
+        {
+            //Foo test;
+            Bar teste;  -> Funciona pois deriva da classe abstrata Foo e faz o override da virtual print() function.
+            Spam test;  -> Funciona pois deriva da classe abstrata Foo e faz o override da virtual print() function.
+
+            test.print();   -> Usando a function overriden
+            teste.print();  -> Usando a function overriden
+
+            return (0);
+        }
+
+    EXEMPLO 3:
+        #include <iostream>
+
+        class Foo
+        {
+            public:
+                virtual void print(void) const = 0;
+        };
+
+        class Bar: public Foo
+        {
+            public:
+                virtual void print(void) const {std::cout << "Hello from Bar!" << std::endl;}
+        };
+
+        class Spam: public Foo
+        {
+            public:
+                virtual void print(void) const {std::cout << "Hello from Spam!" << std::endl;}
+        };
+
+        class Eggs: public Foo
+        {
+            public:
+
+        };
+
+        class Bacon: public Eggs
+        {
+            public:
+                virtual void print(void) const {std::cout << "Hello from Bacon!" << std::endl;}
+        };
+
+        int main(void)
+        {
+            //Foo test;
+            Bar teste;
+            Spam test;
+            Eggs egg;       -> Nao funciona! Pois ela também é uma classe abstrata.
+            Bacon bacon;    -> Funciona pois ela deriva de uma classe abstrata e faz o override da virtual print() function.
+
+            test.print();
+            teste.print();
+            bacon.print();  -> Usando o método já overriden.
+
+            return (0);
+        }
+
+IMPORTANTE:
+    -> Quando criamos uma classe que deriva de uma classe abstrata, precisamos SEMPRE dar o override das virtual functions.
+
+    -> Mas essa nova classe pode criar seus próprios métodos e atributos de maneira independente!!!
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
