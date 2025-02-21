@@ -1,4 +1,5 @@
 #include "Cure.hpp"
+#include <iostram>
 
 // Cure(void);
 Cure::Cure(void): AMateria("cure") {}
@@ -25,4 +26,11 @@ AMateria* Cure::clone() const
 {
     Cure *another = new Cure();
     return (another);
+}
+
+// virtual void use(ICharacter& target);
+void Cure::use(ICharacter& target)
+{
+    std::cout << "* heals <name>’s wounds *" << std::endl;
+    // <name>'s the name of the character
 }
