@@ -8,7 +8,7 @@ CPP_FLAGS = -std=c++98
 
 SRC =	main.cpp \
 		Brain.cpp \
-		Animal.cpp \
+		AAnimal.cpp \
 		Cat.cpp \
 		Dog.cpp \
 		WrongAnimal.cpp \

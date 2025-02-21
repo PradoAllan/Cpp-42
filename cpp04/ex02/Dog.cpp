@@ -1,13 +1,13 @@
 #include "Dog.hpp"
 
-Dog::Dog(void): Animal()
+Dog::Dog(void): AAnimal()
 {
     this->_type = "DOG";
     this->brain = new Brain();
     std::cout << "A new dog type " << this->_type << " got created by the constructor." << std::endl;
 }
 
-Dog::Dog(const Dog &src): Animal(src)
+Dog::Dog(const Dog &src): AAnimal(src)
 {
     this->_type = "DOG";
     std::cout << "A new dog type " << this->_type << " got created by the copy constructor." << std::endl;
@@ -23,7 +23,7 @@ Dog &Dog::operator=(const Dog &src)
 {
     std::cout << "Assignment operator from the DOG class got called!" << std::endl;
     if (this != &src)
-        Animal::operator=(src);
+        AAnimal::operator=(src);
     return (*this);
 }
 

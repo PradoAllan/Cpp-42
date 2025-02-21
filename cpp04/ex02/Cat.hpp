@@ -1,9 +1,9 @@
 #pragma once
 
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class Cat: public Animal
+class Cat: public AAnimal
 {
     private:
         Brain *brain;
@@ -15,5 +15,5 @@ class Cat: public Animal
 
         Cat &operator=(const Cat &src); //canonical
 
-        void    makeSound(void) const;
+        virtual void    makeSound(void) const;
 };
