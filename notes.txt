@@ -725,11 +725,54 @@ INTERFACES EM C++.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
-
+NESTED CLASSES.
+    -> É a possibilidade de criarmos uma classe dentro de outra classe. 
+        ex:
+            class Cat
+            {
+                ...
+                class Leg
+                {
+                    ...
+                }
+            }
+    
+    -> Não entendi a viabilidade nem o motivo de criarmos isso. Mas, anotei para lembrar no futuro...
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+EXCEPTIONS.
+    -> Usamos as exceptions para lidar com diversos tipos de erros durante a execução do nosso código.
+    Isto é, quando usamos o "try catch", estamos fazendo uma espécie de tratamento de erros. Então,
+    sempre que um "throw" jogar uma exception, vamos pegar com o "catch" e lidar com esse erro da
+    melhor maneira. 
+
+    -> Usando as exceptions, fazemos o nosso código não crashar/quebrar com erros inesperados.
+
+    -> Quando damos um "throw" de uma execption, o código automaticamente para de rodar a function. 
+    Então, não precisamos retornar...
+
+    -> A estrutura que usamos para "Pegar" uma exception é a seguinte:
+        try
+        {
+            "O código que você quer tentar rodar."
+        }
+        catch ("O tipo de exception que você quer pegar, isto é, o tipo de erro no 'throw'.")
+        {
+            "O que você quer que aconteca caso você pegue o erro..."
+        }
+        catch (...) -> Nesse caso, estamos aceitando qualquer tipo de erro jogado pelo 'throw'!
+        {
+            "O que você quer fazer nesse caso de erro..."
+        }
+
+        IMPORTANTE: "O último caso, chamado de default handler, PRECISA estar como última opção.
+                    Caso contrário, o compilador deve acusar um error."
+
+                    "É como se fosse o default do switch case..."
+
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------
