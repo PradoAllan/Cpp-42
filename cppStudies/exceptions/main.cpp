@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 
 class Printer
 {
@@ -20,29 +21,91 @@ class Printer
         }
 };
 
+class custom_exception : public std::exception
+{
+    virtual const char* what() const _NOEXCEPT
+    {
+        return ("Custom exception");
+    }
+};
+
+void function()
+{
+    throw 42;
+}
+void function2()
+{
+    function();
+}
+
+
 int     main(void)
 {
-    Printer my("teste", 10);
+    // Printer my("teste", 10);
+
+    // try
+    // {
+    //     my.Print("Hi, my name is Allan and I'm a Software Engineer!");
+    //     my.Print("Hi, my name is Allan and I'm a Software Engineer!");
+    //     my.Print("Hi, my name is Allan and I'm a Software Engineer!");
+    //     my.Print("Hi, my name is Allan and I'm a Software Engineer!");
+    // }
+    // catch (const char *error)
+    // {
+    //     std::cerr << "Execption: " << error << std::endl;
+    // }
+    // catch (int error)
+    // {
+    //     std::cerr << "Execption: " << error << std::endl;
+    // }
+    // catch (...)
+    // {
+    //     std::cerr << "Generic exception..." << std::endl;
+    // }
+
+    // std::string word = "allan";
+
+    // try
+    // {
+    //     std::cout << word.at(0) << std::endl;
+    //     //std::cout << word.at(5) << std::endl;
+    //     int *arr = new int[999999999999999];
+    //     arr[0] = 0;
+    // }
+    // // catch (std::out_of_range& e)
+    // // {
+    // //     std::cerr << "Exception: " << e.what() << std::endl;
+    // // }
+    // // catch (std::bad_alloc& e)
+    // // {
+    // //     std::cerr << "Exception: " << e.what() << std::endl;
+    // // }
+    // catch (std::exception &e)
+    // {
+    //     std::cerr << "Base class: " << e.what() << std::endl;
+    // }
+    // catch (...)
+    // {
+    //     std::cerr << "Exception caught." << std::endl;
+    // }
 
     try
     {
-        my.Print("Hi, my name is Allan and I'm a Software Engineer!");
-        my.Print("Hi, my name is Allan and I'm a Software Engineer!");
-        my.Print("Hi, my name is Allan and I'm a Software Engineer!");
-        my.Print("Hi, my name is Allan and I'm a Software Engineer!");
+        //throw std::exception();
+        //throw std::runtime_error("test");
+        // throw custom_exception();
+        // throw 20;
+        function2();
     }
-    catch (const char *error)
+    catch(std::exception& e)
     {
-        std::cerr << "Execption: " << error << std::endl;
+        std::cerr << "Test: " << e.what() << std::endl;
     }
     catch (int error)
     {
-        std::cerr << "Execption: " << error << std::endl;
+        std::cerr << "int error code: " << error << std::endl;
     }
-    catch (...)
-    {
-        std::cerr << "Generic exception..." << std::endl;
-    }
+    
 
     return (0);
 }

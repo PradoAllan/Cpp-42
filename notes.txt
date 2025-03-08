@@ -772,6 +772,56 @@ EXCEPTIONS.
 
                     "É como se fosse o default do switch case..."
 
+COMO FUNCIONA AS EXCEPTIONS:
+    Link com todas as classes derivadas:
+        https://en.cppreference.com/w/cpp/error/exception
+
+                        exception       -> Class base
+                            |
+                            |
+            ---------------------------------
+            |               |               |
+        logic_error     Bad_alloc       run_time_error      -> Classes derivadas da classe base exception
+            |
+        out_of_range        -> Classe derivada de logic_error, que deriva da classe base exception
+
+    -> "Então, se quisermos ser bem genericos no nosso catch, podemos fazer dessa forma:"
+
+        try
+        {
+            ...
+        }
+        catch (exception& e)
+        {
+            std::cerr << "Exception: " << e.what() << std::endl;
+        }
+            "Como todas as exceptions derivam da classe base exception, esse catch vai dar conta
+            de todos as exceptions possíveis."
+
+    -> É considerado Boa prática lidar com as exceptions do jeito mais específico possível. 
+    Isto é, evitar dar catch() em erros genéricos. Por exemplo:
+        try
+        {
+            ...
+        }
+        catch (...)                                                -> Jeito não tão legal.
+        {
+            "generic exception"
+        }
+
+        OU
+
+        try
+        {
+            ...
+        }
+        catch (std::exception &e)                                  -> Jeito não tão legal.
+        {
+            std::cout << "Exception: " << e.what() << std::endl;
+        }
+        
+
+
 
 
 
