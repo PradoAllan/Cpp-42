@@ -15,4 +15,6 @@ class PresidentialPardonForm : public AForm
         ~PresidentialPardonForm(void);
 
         PresidentialPardonForm &operator=(const PresidentialPardonForm &src);
+
+        // virtual void    execute(Bureaucrat const & executor);
 };
