@@ -1,4 +1,4 @@
-NAME = 
+NAME = 28B_not_28C...
 
 COMPILER = c++
 
@@ -6,7 +6,12 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	main.cpp \
+		AForm.cpp \
+		Bureaucrat.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
