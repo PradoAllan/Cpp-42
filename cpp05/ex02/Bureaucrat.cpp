@@ -2,25 +2,20 @@
 #include "AForm.hpp"
 #include <iostream>
 
-// Bureaucrat(const std::string name, int grade);
 Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name)
 {
     setGrade(grade);
 }
 
-// Bureaucrat(void);
 Bureaucrat::Bureaucrat(void): _name("Generic") {}
 
-// Bureaucrat(const Bureaucrat &src);
 Bureaucrat::Bureaucrat(const Bureaucrat &src)
 {
     *this = src;
 }
 
-// ~Bureaucrat(void);
 Bureaucrat::~Bureaucrat(void) {}
 
-// Bureaucrat operator=(const Bureaucrat &src);
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 {
     if (this != &src)
@@ -28,7 +23,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
     return (*this);
 }
 
-// void        setGrade(int grade);
 void Bureaucrat::setGrade(int grade)
 {
     if (grade > 150)
@@ -38,25 +32,21 @@ void Bureaucrat::setGrade(int grade)
     this->_grade = grade;
 }
 
-// std::string getName(void) const;
 std::string Bureaucrat::getName(void) const
 {
     return (this->_name);
 }
 
-// int         getGrade(void) const;
 int Bureaucrat::getGrade(void) const
 {
     return (this->_grade);
 }
 
-// void        incrementGrade(void);
 void    Bureaucrat::incrementGrade(void)
 {
     setGrade(getGrade() - 1);
 }
 
-// void        decrementGrade(void);
 void    Bureaucrat::decrementGrade(void)
 {
     setGrade(getGrade() + 1);
