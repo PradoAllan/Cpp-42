@@ -8,10 +8,7 @@ PresidentialPardonForm::PresidentialPardonForm(void): AForm("Presidential", 25, 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src): AForm(src) {}
 
 // PresidentialPardonForm(std::string &target);
-PresidentialPardonForm::PresidentialPardonForm(std::string &target): AForm("Presidential", 25, 5), _target(target)
-{
-    std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(std::string &target): AForm("Presidential", 25, 5), _target(target) {}
 
 // ~PresidentialPardonForm(void);
 PresidentialPardonForm::~PresidentialPardonForm(void) {}
@@ -22,4 +19,11 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
     if (this != &src)
         AForm::operator=(src);
     return (*this);
+}
+
+// virtual void    execute(Bureaucrat const & executor) const;
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const
+{
+    AForm::execute(executor);
+    std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

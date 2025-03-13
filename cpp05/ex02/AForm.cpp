@@ -49,12 +49,25 @@ int AForm::getExecGrade(void) const
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-    return ("Form: grade to high...");
+    return ("AForm: grade to high...");
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-    return ("Form: grade to low...");
+    return ("AForm: grade to low...");
+}
+
+const char *AForm::AlreadySigned::what() const throw()
+{
+    return ("AForm: already signed...");
+}
+
+void    AForm::execute(Bureaucrat const & executor) const
+{
+    if (getSignedAt())
+        throw (AForm::AlreadySigned());
+    if (executor.getGrade() > getExecGrade())
+        throw (AForm::GradeTooLowException());
 }
 
 void AForm::beSigned(const Bureaucrat &src)

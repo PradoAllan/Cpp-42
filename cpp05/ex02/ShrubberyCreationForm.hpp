@@ -17,7 +17,7 @@ class ShrubberyCreationForm : public AForm
 
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 
-        // virtual void    execute(Bureaucrat const & executor);
+        void    execute(Bureaucrat const & executor) const;
 
         class OpeningFileError : public std::exception
         {

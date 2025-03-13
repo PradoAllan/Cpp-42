@@ -25,7 +25,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string &target): AForm("Shrubb
     newFile << "   &\/(/&/&||/& /_/)_&" << std::endl;
     newFile << " &() &\/&|()|/&\/ '%' &" << std::endl;
     newFile << "&_\/_&&_\ |& |&&/&__%_/" << std::endl;
-    newFile << "   &&   ||| " << std::endl;
+    newFile << "   &&    ||| " << std::endl;
     newFile << "        ||| " << std::endl;
     newFile << "        ||| " << std::endl;
     newFile << "        ||| " << std::endl;
@@ -42,6 +42,30 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     if (this != &src)
         AForm::operator=(src);
     return (*this);
+}
+
+// void    execute(Bureaucrat const & executor) const;
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+    AForm::execute(executor);
+    std::string     newFileName = this->_target + "_shrubbery";
+    std::ofstream   newFile;
+
+    newFile.open(newFileName.c_str(), std::ofstream::out);
+    if (!newFile.is_open())
+        throw ShrubberyCreationForm::OpeningFileError();
+    newFile << "Oi" << std::endl;
+    newFile << "    &&& &&  & &&   " << std::endl;
+    newFile << "   && &\/&\|& ()|/ @, &&" << std::endl;
+    newFile << "   &\/(/&/&||/& /_/)_&" << std::endl;
+    newFile << " &() &\/&|()|/&\/ '%' &" << std::endl;
+    newFile << "&_\/_&&_\ |& |&&/&__%_/" << std::endl;
+    newFile << "   &&    ||| " << std::endl;
+    newFile << "        ||| " << std::endl;
+    newFile << "        ||| " << std::endl;
+    newFile << "        ||| " << std::endl;
+    newFile << "  , -=-~  .-^- _ " << std::endl; 
+    newFile.close();
 }
 
 const char * ShrubberyCreationForm::OpeningFileError::what() const throw()

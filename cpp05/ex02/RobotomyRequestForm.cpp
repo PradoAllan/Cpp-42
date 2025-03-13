@@ -8,14 +8,7 @@ RobotomyRequestForm::RobotomyRequestForm(void): AForm("Robotomy", 72, 45), _targ
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src): AForm(src) {}
 
 // RobotomyRequestForm(std::string &target);
-RobotomyRequestForm::RobotomyRequestForm(std::string &target): AForm("Robotomy", 72, 45), _target(target)
-{
-    std::cout << "DrrrrrDrrrrrrDrrrrr..." << std::endl;
-    if ((std::rand() % 2) == 0)
-        std::cout << target << " has been robotomized seccessfully!" << std::endl;
-    else
-        std::cout << "Unfortunately The robotomy failed..." << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(std::string &target): AForm("Robotomy", 72, 45), _target(target) {}
 
 // ~RobotomyRequestForm(void);
 RobotomyRequestForm::~RobotomyRequestForm(void) {}
@@ -26,4 +19,15 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
     if (this != &src)
         AForm::operator=(src);
     return (*this);
+}
+
+// void    execute(Bureaucrat const & executor) const;
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+    AForm::execute(executor);
+    std::cout << "DrrrrrDrrrrrrDrrrrr..." << std::endl;
+    if ((std::rand() % 2) == 0)
+        std::cout << this->_target << " has been robotomized seccessfully!" << std::endl;
+    else
+        std::cout << "Unfortunately The robotomy failed..." << std::endl;
 }
