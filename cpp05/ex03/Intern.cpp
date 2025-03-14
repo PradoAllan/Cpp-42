@@ -5,19 +5,15 @@
 #include <iostream>
 #include <exception>
 
-// Intern(void);
 Intern::Intern(void) {}
 
-// Intern(const Intern &src);
 Intern::Intern(const Intern &src)
 {
     *this = src;
 }
 
-// ~Intern(void);
 Intern::~Intern(void) {}
 
-// AForm *makeForm(const std::string &formName, const std::string &target);
 AForm *Intern::makeForm(std::string formName, std::string target)
 {
     std::string name = formName;
@@ -45,7 +41,7 @@ AForm *Intern::makeForm(std::string formName, std::string target)
                 std::cout << "Intern creates " << name << std::endl;
                 break;
             default:
-                throw std::runtime_error("Was not possible to instanciate a new AForm...");
+                throw WrongNameForm();
                 break;
         }
     }
@@ -56,10 +52,13 @@ AForm *Intern::makeForm(std::string formName, std::string target)
     return (form);
 }
     
-// Intern &operator=(const Intern &src);
 Intern &Intern::operator=(const Intern &src)
 {
-    if (this != &src)
-        *this = src;
+    (void)src;
     return (*this);
+}
+
+const char *Intern::WrongNameForm::what() const throw()
+{
+    return ("Was not possible to instanciate a new AForm...");
 }

@@ -15,4 +15,10 @@ class Intern
         AForm *makeForm(std::string formName, std::string target);
 
         Intern &operator=(const Intern &src);
+
+        class WrongNameForm : public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
 };
