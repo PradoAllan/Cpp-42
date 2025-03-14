@@ -25,7 +25,7 @@ int	main(void)
 	Ferd.executeForm(*robo);
 	Ferd.executeForm(*presi);
 
-	if (test != nullptr)
+	if (test)
 		Ferd.executeForm(*test);
 	else
 		std::cout << "Form not found" << std::endl;
