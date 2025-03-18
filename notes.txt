@@ -825,8 +825,50 @@ COMO FUNCIONA AS EXCEPTIONS:
         }
         
 
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+CASTING EM C++.
+    -> Type casting é a fomra que podemos mudar o tipo de uma variavel. Isto é, se temos uma variavel do tipo INT
+    e queremos transformar o valor para DOUBLE, podemos fazer o type casting para o novo tipo de dado.
+
+        int value = 42;
+        double new = value;
+
+            OU                                                              -> Ambos exemplos são em C.
+        
+        double value = 2.3;
+        int value2 = 2;
+        double result = (int)(value + value2); -> result = 4.0;
+
+    -> Temos dois tipos de type casting. Casting IMPLÍCITO e IMPLÍCITO. Os exemplos acima são representações
+    deles respectivamente.
+
+    -> Em C++ podemos fazer da mesma maneira. Mas, temos uma maneira mais correta de se fazer o casting.
+
+        double value = 5.25;
+        double result = static_cast<int>(value) + 5.3;
+
+    -> Bom link com os casts em c++: https://cplusplus.com/doc/oldtutorial/typecasting/
+
+OBS: Esses tipos de casting em c++, não fazem nada de diferente em comparação aos castings em C.
+    Isto é, podemos atingir os mesmos resultados usando o casting de C.
+
+    -> Basicamente em c++ temos 4 tipos de casting:
+        - static_cast<new_type> (expression)
+        - dynamic_cast<new_type> (expression)
+        - reinterpret_cast<new_type> (expression)
+        - const_cast<new_type> (expression)
 
 
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------------------------------------------------------
