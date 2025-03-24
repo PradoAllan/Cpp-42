@@ -829,7 +829,7 @@ COMO FUNCIONA AS EXCEPTIONS:
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
 CASTING EM C++.
-    -> Type casting é a fomra que podemos mudar o tipo de uma variavel. Isto é, se temos uma variavel do tipo INT
+    -> Type casting é a forma que podemos mudar o tipo de uma variavel. Isto é, se temos uma variavel do tipo INT
     e queremos transformar o valor para DOUBLE, podemos fazer o type casting para o novo tipo de dado.
 
         int value = 42;
@@ -841,8 +841,12 @@ CASTING EM C++.
         int value2 = 2;
         double result = (int)(value + value2); -> result = 4.0;
 
-    -> Temos dois tipos de type casting. Casting IMPLÍCITO e IMPLÍCITO. Os exemplos acima são representações
+    -> Temos dois tipos de type casting. Casting IMPLÍCITO e EXPLÍCITO. Os exemplos acima são representações
     deles respectivamente.
+
+    -> Em alguns casos, tanto com o IMPLÍCITO quanto com o EXPLÍCITO, principalmente com tipos de dados numéricos, 
+    dependendo do casting que desejamos fazer, podemos ter a perda de precisão. Nesses casos, o compilador 
+    pode nos avisar com um warning.
 
     -> Em C++ podemos fazer da mesma maneira. Mas, temos uma maneira mais correta de se fazer o casting.
 
@@ -855,10 +859,49 @@ OBS: Esses tipos de casting em c++, não fazem nada de diferente em comparação
     Isto é, podemos atingir os mesmos resultados usando o casting de C.
 
     -> Basicamente em c++ temos 4 tipos de casting:
-        - static_cast<new_type> (expression)
         - dynamic_cast<new_type> (expression)
+        - static_cast<new_type> (expression)
         - reinterpret_cast<new_type> (expression)
         - const_cast<new_type> (expression)
+
+        -> Dynamic_cast<>():
+            - Só pode ser usado com ponteiros e referências de objetos.
+            - Seu objetivo é garantir que o resultado do CASTING seja um objeto completo da classe
+            desejada. Isto é, da classe passada entre '<>'
+            - Entretanto, o dynamic cast sempre vai ser bem sucedido quando castarmos
+            uma classe para uma das suas classes base.
+
+            exemplo:
+                class CBase { };
+                class CDerived: public CBase { };
+
+                CBase b; CBase* pb;
+                CDerived d; CDerived* pd;
+
+                pb = dynamic_cast<CBase*>(&d);     // ok: derived-to-base
+                pd = dynamic_cast<CDerived*>(&b);  // wrong: base-to-derived  -> Isso sempre vai acontecer
+                                                                                a menos que a classe base 
+                                                                                seja polimórfica!
+
+        -> Static_cast<>():
+            - Pode performar conversões entre ponteiros para classes relacionadas, não apenas entre
+            classes derivadas para classe base, mas também, da classe base para classe derivada.
+            - O static_cast garante que as classes são compatíveis se o objeto for castado. Mas não
+            checa durante o tempo de execução se o objeto sendo convertido é, de fato, um 'full object'
+            do tipo destino.
+
+            - O static_cast pode ser usado para castar qualquer tipo de non-pointer convertion que
+            possa ser castado de forma implícita.
+            - Ou qulquer casting entre classes com construtores explícitos ou operators functions.
+
+            exemplo:
+                class CBase {};
+                class CDerived: public CBase {};
+                CBase * a = new CBase;
+                CDerived * b = static_cast<CDerived*>(a);
+
+            - Basicamente, nos permite fazer qualquer tipo de casting desde que as classes/tipos de dados
+            desejados, possuam alguma relação com a expressão.
 
 
 ---------------------------------------------------------------------------------------------------------------------------
