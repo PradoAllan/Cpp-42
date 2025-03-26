@@ -865,6 +865,7 @@ OBS: Esses tipos de casting em c++, não fazem nada de diferente em comparação
         - const_cast<new_type> (expression)
 
         -> Dynamic_cast<>():
+            - É o único que faz o casting durante o tempo de execução, não no tempo de compilação.
             - Só pode ser usado com ponteiros e referências de objetos.
             - Seu objetivo é garantir que o resultado do CASTING seja um objeto completo da classe
             desejada. Isto é, da classe passada entre '<>'
@@ -902,6 +903,41 @@ OBS: Esses tipos de casting em c++, não fazem nada de diferente em comparação
 
             - Basicamente, nos permite fazer qualquer tipo de casting desde que as classes/tipos de dados
             desejados, possuam alguma relação com a expressão.
+
+        -> Reinterpret_cast<>():
+            - Converte qualquer tipo de ponteiro para outro qualquer tipo de ponteiro. Mesmo para
+            Classes totalmente sem relação. 
+            - Qualquer tipo de conversão é permitida. Isto é, nem o conteúdo nem o tipo do ponteiro 
+            é checado para fazer a conversão.
+
+            exemplo:
+                class A {};
+                class B {};
+                A * a = new A;
+                B * b = reinterpret_cast<B*>(a);
+
+            - Não, o exemplo acima não faz o menor sentido, mas funciona.
+
+        -> Const_cast<>():
+            - Esse tipo de casting manipula a "CONSTANCIA" de um objeto. Isto é, para seta-la ou
+            remove-la.
+            - Podemos usa-lo para passar um const object para uma função que recebe, como parametro,
+            um non-const object.
+
+            exemplo:
+                #include <iostream>
+                using namespace std;
+
+                void print (char * str)
+                {
+                    cout << str << endl;
+                }
+
+                int main () {
+                    const char * c = "sample text";
+                    print ( const_cast<char *> (c) );
+                    return 0;
+                }
 
 
 ---------------------------------------------------------------------------------------------------------------------------
