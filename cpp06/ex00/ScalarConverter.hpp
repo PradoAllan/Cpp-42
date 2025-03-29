@@ -10,10 +10,10 @@ class ScalarConverter
         ~ScalarConverter(void);
         ScalarConverter &operator=(const ScalarConverter &src);
 
-        static void execChar(char value);
-        static void execInt(int value);
-        static void execFloat(float value);
-        static void execDouble(double value);
+        static void execChar(std::string &s);
+        static void execInt(std::string &s);
+        static void execFloat(std::string &s);
+        static void execDouble(std::string &s);
 
         int checkDataType(std::string &s);
 

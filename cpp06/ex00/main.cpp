@@ -1,14 +1,14 @@
 #include "ScalarConverter.hpp"
+#include <iostream>
 
-int main(void)
+int main(int ac, char **av)
 {
-    // ScalarConverter test1;
-    // ScalarConverter *test2 = new ScalarConverter();
-    // ScalarConverter *test3 = new ScalarConverter();
-    // ScalarConverter *test4 = new ScalarConverter();
-
-    ScalarConverter::convert("Ola mundo!");
-    ScalarConverter::convert("Hello world!");
-
+    if (ac == 2)
+    {
+        std::string string = av[1];
+        ScalarConverter::convert(string);
+    }
+    else
+        std::cerr << "try smth like this: ./prog 42" << std::endl;
     return (0);
 }

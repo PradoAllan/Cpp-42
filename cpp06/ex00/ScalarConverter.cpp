@@ -1,19 +1,16 @@
 #include "ScalarConverter.hpp"
+#include "dataTypes.hpp"
 #include <iostream>
 
-// ScalarConverter(void);
 ScalarConverter::ScalarConverter(void) {}
 
-// ScalarConverter(const ScalarConverter &src);
 ScalarConverter::ScalarConverter(const ScalarConverter &src)
 {
     *this = src;
 }
 
-// ~ScalarConverter(void);
 ScalarConverter::~ScalarConverter(void) {}
 
-// ScalarConverter operator=(const ScalarConverter &src);
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src)
 {
     if (this != &src)
@@ -21,57 +18,76 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src)
     return (*this);
 }
 
-// static void execChar(char value);
-void ScalarConverter::execChar(char value)
+void ScalarConverter::execChar(std::string &s)
 {
-    std::cout << "Casting Char to int: " << static_cast<int>(value) << std::endl;
-    std::cout << "Casting Char to float: " << static_cast<float>(value) << std::endl;
-    std::cout << "Casting Char to double: " << static_cast<double>(value) << std::endl;
+    std::cout << "EXECCHAR()" << std::endl;
+    const char *value;
+
+    value = s.c_str();
+    std::cout << "Casting Char to Int: " << static_cast<int>(value[0]) << std::endl;
+    std::cout << "Casting Char to Float: " << static_cast<float>(value[0]) << std::endl;
+    std::cout << "Casting Char to Double: " << static_cast<double>(value[0]) << std::endl;
 }
 
-// static void execInt(int value);
-void ScalarConverter::execInt(int value)
+void ScalarConverter::execInt(std::string &s)
 {
-    std::cout << "Casting Int to char: " << static_cast<char>(value) << std::endl;
-    std::cout << "Casting Int to float: " << static_cast<float>(value) << std::endl;
-    std::cout << "Casting Int to double: " << static_cast<double>(value) << std::endl;
+    (void)s;
+    std::cout << "EXECINT()" << std::endl;
 }
 
-// static void execFloat(float value);
-void ScalarConverter::execFloat(float value)
+void ScalarConverter::execFloat(std::string &s)
 {
-    std::cout << "Casting Float to int: " << static_cast<int>(value) << std::endl;
-    std::cout << "Casting Float to char: " << static_cast<char>(value) << std::endl;
-    std::cout << "Casting Float to double: " << static_cast<double>(value) << std::endl;
+    (void)s;
+    std::cout << "EXECFLOAT()" << std::endl;
 }
 
-// static void execDouble(double value);
-void ScalarConverter::execDouble(double value)
+void ScalarConverter::execDouble(std::string &s)
 {
-    std::cout << "Casting Double to int: " << static_cast<int>(value) << std::endl;
-    std::cout << "Casting Double to char: " << static_cast<char>(value) << std::endl;
-    std::cout << "Casting Double to float: " << static_cast<float>(value) << std::endl;
+    (void)s;
+    std::cout << "EXECDOUBLE()" << std::endl;
 }
 
-// int checkDataType(std::string &s);
 int ScalarConverter::checkDataType(std::string &s)
 {
-    const char *aux;
+    const char  *aux;
+    size_t        size;
 
     if (s.empty())
-        return (-1);
+        return (ERROR);
     aux = s.c_str();
-    if (s.size() == 1 && !isdigit(aux[0]))
+    size = s.size();
+    if (size == 1 && !isdigit(aux[0]))
+        return (CHAR);
+    else if (s.find('.', 0) < size)
     {
-        //call function isChar()
+        if (aux[size - 1] == 'f')
+            return (FLOAT);
+        else
+            return (DOUBLE);
     }
-    else if (s.find('.', 0) < s.size())
-    {
-    }
+    return (INT);
 }
 
-// static void convert(std::string &s);
 void ScalarConverter::convert(std::string &s)
 {
+    ScalarConverter aux;
 
+    switch (aux.checkDataType(s))
+    {
+    case CHAR:
+        aux.execChar(s);
+        break;
+    case INT:
+        aux.execInt(s);
+        break;
+    case FLOAT:
+        aux.execFloat(s);
+        break;
+    case DOUBLE:
+        aux.execDouble(s);
+        break;
+    default:
+        std::cerr << "Invalid dataType..." << std::endl;
+        break;
+    }
 }
