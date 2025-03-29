@@ -883,6 +883,8 @@ OBS: Esses tipos de casting em c++, não fazem nada de diferente em comparação
                 pd = dynamic_cast<CDerived*>(&b);  // wrong: base-to-derived  -> Isso sempre vai acontecer
                                                                                 a menos que a classe base 
                                                                                 seja polimórfica!
+            
+            OBS: Para que uma base class seja polimórfica, ela precisa ter, ao menos, uma virtual function.
 
         -> Static_cast<>():
             - Pode performar conversões entre ponteiros para classes relacionadas, não apenas entre
@@ -939,11 +941,28 @@ OBS: Esses tipos de casting em c++, não fazem nada de diferente em comparação
                     return 0;
                 }
 
+STATIC VS DYNAMIC:
+    - Dynamic_cast: "Mais caro em termos de processamento. Trabalha com ponteiros e referencias. 
+                    Em caso de erro, retorna uma (std::bad_cast)."
+    
+    - Static_cast: "Mais barato em termos de processamento. Mais perigoso, pois não roda em tempo
+                    de execução, então não tem nenhum tipo de validação. Roda em tempo de compilação."
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+FAZENDO UMA CLASSE NÃO INSTACIÁVEL.
+    - Bom, para fazermos isso temos algumas maneiras:
+        -> "Se essa classe for uma classe abstrata, isto é, ter algum método virtual puro, ela não pode ser
+        instanciada. Então, se uma classe for abstrata, ela já não pode ser instanciada, logo, não precisamos
+        nos preocupar nesse caso."
 
+        -> "Se for uma classe normal, isto é, não abstrata, temos alguns jeitos. Podemos transforma-la em
+        uma classe abstrata, mas talvez, não faça muito sentido para o nosso problema."
+
+        -> "Podemos colocar os métodos construtores como private:, dessa maneira, não poderemos acessa-los
+        de fora sem uma instancia dessa classe, e não conseguiremos instancia-la pois não temos acesso aos 
+        construtores."
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
