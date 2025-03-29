@@ -1,4 +1,4 @@
-NAME = 
+NAME = conversion_of_scalar_types
 
 COMPILER = c++
 
@@ -6,7 +6,8 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	main.cpp \
+		ScalarConverter.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
