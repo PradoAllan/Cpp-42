@@ -6,5 +6,6 @@ enum dataTypes
     INT,
     FLOAT,
     DOUBLE,
+    LITERALS,
     ERROR
 };

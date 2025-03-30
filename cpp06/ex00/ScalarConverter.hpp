@@ -14,8 +14,11 @@ class ScalarConverter
         static void execInt(std::string &s);
         static void execFloat(std::string &s);
         static void execDouble(std::string &s);
+        static void execForFun(std::string &s);
+        static void execForScience(std::string &s);
 
         int checkDataType(std::string &s);
+        bool isDecimalNumeric(std::string &s);
 
     public:
         static void convert(std::string &s);

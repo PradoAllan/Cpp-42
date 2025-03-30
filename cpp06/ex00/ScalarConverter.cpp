@@ -14,15 +14,24 @@ ScalarConverter::~ScalarConverter(void) {}
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src)
 {
     if (this != &src)
-        *this = src;
+    *this = src;
     return (*this);
+}
+
+int checkPseudoLiterals(std::string &s)
+{
+    if (s == "nanf" || s == "+inff" || s == "-inff")
+        return (FLOAT);
+    else if (s == "nan" || s == "+inf" || s == "-inf")
+        return (DOUBLE);
+    return (-1);
 }
 
 void ScalarConverter::execChar(std::string &s)
 {
     std::cout << "EXECCHAR()" << std::endl;
     const char *value;
-
+    
     value = s.c_str();
     std::cout << "Casting value to Char: " << static_cast<char>(value[0]) << std::endl;
     std::cout << "Casting value to Int: " << static_cast<int>(value[0]) << std::endl;
@@ -34,7 +43,7 @@ static bool CharLimit(char value)
 {
     if (value < std::numeric_limits<char>::min() || value > std::numeric_limits<char>::max())
 	{
-		std::cout << "Casting value to Char: impossible" << std::endl;
+        std::cout << "Casting value to Char: impossible" << std::endl;
 		return (1);
 	}
 	return (0);
@@ -63,7 +72,7 @@ static bool IntLimit(int value)
 {
     if (value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max())
 	{
-		std::cout << "Casting value to Int: impossible" << std::endl;
+        std::cout << "Casting value to Int: impossible" << std::endl;
 		return (1);
 	}
 	return (0);
@@ -74,10 +83,14 @@ void ScalarConverter::execFloat(std::string &s)
     std::cout << "EXECFLOAT()" << std::endl;
     float value;
     
+    if (checkPseudoLiterals(s) == FLOAT)
+    {
+        // execute
+        // static void execForScience(std::string &s);
+        std::cout << "For science..." << std::endl;
+        return ;
+    }
     value = atof(s.c_str());
-    //check pdf for the science part...
-    //if (science())
-    //    return ;
     if (!CharLimit(value))
     {
         if (isprint(static_cast<char>(value)))
@@ -106,9 +119,14 @@ void ScalarConverter::execDouble(std::string &s)
     std::cout << "EXECDOUBLE()" << std::endl;
     double value;
 
+    if (checkPseudoLiterals(s) == DOUBLE)
+    {
+        // execute
+        // static void execForFun(std::string &s);
+        std::cout << "For fun..." << std::endl;
+        return ;
+    }
     value = atof(s.c_str());
-    // if(science())
-    //  return ;
     if (!CharLimit(value))
     {
         if (isprint(static_cast<char>(value)))
@@ -123,20 +141,47 @@ void ScalarConverter::execDouble(std::string &s)
     std::cout << "Casting value to Double: " << value << std::endl;
 }
 
+bool	ScalarConverter::isDecimalNumeric(std::string &s)
+{
+	size_t  i;
+    bool dots = false;
+
+    i = 0;
+    if (s[i] == '+' || s[i] == '-')
+        i++;
+    while (s[i] != '\0') {
+        if (!isdigit(s[i])) {
+            if (s[i] == '.' && !dots)
+                dots = true;
+            else if (s[i] == 'f' && s[i + 1] == '\0')
+                return true;
+            else
+                return false;
+        }
+        i++;
+    }
+    return true;
+}
+
+
 int ScalarConverter::checkDataType(std::string &s)
 {
-    const char  *aux;
-    size_t        size;
+    const char      *aux;
+    int             pseudo;
+    size_t          size;
 
     if (s.empty())
         return (ERROR);
+    pseudo = checkPseudoLiterals(s);
     aux = s.c_str();
     size = s.size();
     if (size == 1 && !isdigit(aux[0]))
         return (CHAR);
-    else if (s.find('.', 0) < size)
+    else if (!isDecimalNumeric(s) && pseudo == -1)
+        return (ERROR);
+    else if (s.find('.', 0) < size || pseudo != -1)
     {
-        if (aux[size - 1] == 'f')
+        if (aux[size - 1] == 'f' || pseudo == FLOAT)
             return (FLOAT);
         else
             return (DOUBLE);
@@ -163,7 +208,10 @@ void ScalarConverter::convert(std::string &s)
         aux.execDouble(s);
         break;
     default:
-        std::cerr << "Invalid dataType..." << std::endl;
+        std::cout << "Casting value to Char: not possible" << std::endl;
+        std::cout << "Casting value to Int: not possible" << std::endl;
+        std::cout << "Casting value to Float: not possible" << std::endl;
+        std::cout << "Casting value to Double: not possible" << std::endl;
         break;
     }
 }
