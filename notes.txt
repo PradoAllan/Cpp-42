@@ -967,7 +967,29 @@ FAZENDO UMA CLASSE NÃO INSTACIÁVEL.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+SITUAÇÕES EXCEPCIONAIS EM NUMEROS DE PONTO FLUTUANTE (FLOAT E DOUBLE).
+Importante: O sufixo 'f' é para explicitar como FLOAT. Mas eles são exatamente a mesma coisa
 
+    - nan & nanf (Not a number):
+        "Ocorre quando um cálculo gera um resultado inefinido."
+        exemplo: 0 / 0
+                 log(-1)
+                inf - inf
+        
+        "Podemos verificar se um numero é nan com a função std::isnan(x)."
+    
+    - +/-inf & +/-inff (Infinito positivo e negativo):
+        "Represenam valores infinitos que surgem quando um cálculo excede os limites de um
+        número de ponto flutuante."
+        exemplo: 1.0 / 0.0 // Infinito positivo
+                 -1.0 / 0.0 // Infinito negativo
+                 std::exp(1000)
+                 std::pow(10, 400)
+
+        "Podemos verificar se um número é +/-inf com a função std::isinf(x)."
+
+    "De forma resumida, nan & nanf são erros matemáticos (valores indefinidos)
+    e os +/-inf & inff são resultados que ultrapassam os limites numéricos."
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
