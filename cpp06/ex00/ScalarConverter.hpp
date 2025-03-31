@@ -1,6 +1,14 @@
 #pragma once
 
+# include <iostream>
 # include <string>
+# include <cstdlib>
+# include <cerrno>
+# include <cstring>
+# include <limits>
+# include <cmath>
+# include <iomanip>
+# include <cfloat>
 
 class ScalarConverter
 {
@@ -9,16 +17,6 @@ class ScalarConverter
         ScalarConverter(const ScalarConverter &src);
         ~ScalarConverter(void);
         ScalarConverter &operator=(const ScalarConverter &src);
-
-        static void execChar(std::string &s);
-        static void execInt(std::string &s);
-        static void execFloat(std::string &s);
-        static void execDouble(std::string &s);
-        static void execForFun(std::string &s);
-        static void execForScience(std::string &s);
-
-        int checkDataType(std::string &s);
-        bool isDecimalNumeric(std::string &s);
 
     public:
         static void convert(std::string &s);
