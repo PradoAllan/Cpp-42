@@ -9,6 +9,6 @@ int main(int ac, char **av)
         ScalarConverter::convert(string);
     }
     else
-        std::cerr << "try smth like this: ./prog 42" << std::endl;
+        std::cerr << "try smth like this: ./convert 42" << std::endl;
     return (0);
 }
