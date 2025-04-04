@@ -994,19 +994,263 @@ Importante: O sufixo 'f' é para explicitar como FLOAT. Mas eles são exatamente
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
-TEMPLATES.
+CLASS TEMPLATES.
     - Parece que é uma forma de criar classes / funções genéricas. Isto é, que podem servir para qualquer
     tipo de dado.
 
     - https://www.youtube.com/watch?v=S2OFJe73fxA
     - https://www.youtube.com/watch?v=mQqzP9EWu58
 
+    exemplo de uso:
+        class IntArray
+        {
+            private:
+
+            public:
+                int intArray[10];
+
+                void fillArray(int value)
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        intArray[i] = value;
+                    }
+                }
+
+                int& at(int index)
+                {
+                    return (intArray[index]);
+                }
+        };
+
+        class StringArray
+        {
+            private:
+
+            public:
+                string stringArray[10];
+
+                void fillArray(string value)
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        stringArray[i] = value;
+                    }
+                }
+
+                string& at(int index)
+                {
+                    return (stringArray[index]);
+                }
+        };
+
+    -> No exemplo acima, temos, basicamente, duas classes exatamente iguais e com os mesmos métodos.
+    Apenas com o tipo de dado diferente.
+
+    -> Em casos como esse, o código deve ser refatorado pois existem código repetidos.
+
+    -> Para refatorarmos isso, podemos usar os TEMPLATES. Que nos possibilitam criar classes genéricas.
+
+    exemplo de uma template class:
+        template <typename T>
+        class Array
+        {
+            private:
+
+            public:
+                T array[10];
+
+                void fill(T value)
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        array[i] = value;
+                    }
+                }
+
+                T& at(int index)
+                {
+                    return array[index];
+                }
+        };
+
+    Usamos dessa maneira:
+        int main(void)
+        {
+            Array<int> intArr;
+
+            intArr.fill(2);
+
+            std::cout << "intArr[4]: " << intArr.at(4) << std::endl;
+
+            return (0);
+        }
+
+    -> No exemplo acima, informamos, a partir do tipo de dado dentro das "< >", ao compilador que
+    o tipo de dado usado nessa instancia de template class , será um INT. Então, ao compilar, ele 
+    altera todos os "T" para "int".
+
+    -> Podemos também, passar outros parametros para a template class:
+    exemplo:
+        template <typename T, int length>
+        class Array
+        {
+            private:
+
+            public:
+                T array[length];
+
+                void fill(T value)
+                {
+                    for (int i = 0; i < length; i++)
+                    {
+                        array[i] = value;
+                    }
+                }
+
+                T& at(int index)
+                {
+                    return array[index];
+                }
+        };
+
+        int main(void)
+        {
+            Array<int, 42> intArr;
+
+            intArr.fill(42);
+
+            std::cout << "intArr[4]: " << intArr.at(4) << std::endl;
+
+            Array<string, 8> strArr;
+
+            str.fill("allan");
+            str.at(6) = "prado";
+
+            for (int i = 0; i < 8; i++)
+            {
+                std::cout << "index: " << i << "value: "<< str.at(i) << std::endl;
+            }
+
+            return (0);
+        }
+
+IMPORTANTE:
+    -> Templates rodam em tempo de compilação. Isto é, não podemos alterar nada em tempo de execução. Caso
+    contrário, tomamos um erro na hora de compilar.
+
+    -> Então, os parametros passados no "< >" precisam ser constantes no tempo de compilação.
+
+    -> Então não podemos fazer algo do tipo:
+        ...
+        int value;
+        std::cin >> value;          -> Isso ocorre em tempo de execução.
+        Array<int, value> intArr;   -> Automaticamente, isto será determinado em tempo de execução.
+                                    -> Causando um erro ao compilar.
+        ...
 
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+FUNCTION TEMPLATES.
+    LINK: https://www.youtube.com/watch?v=XgGEJylsWsQ
 
+    -> A ideia de FUNCTION TEMPLATES é que possamos ter funções genéricas. Isto é, que possam funcionar
+    com qualquer tipo de dado.
+
+    -> Isso é muito bom para evitar repetições de código no nosso projeto.
+
+    exemplo:
+        template <typename T>
+        T find_max(T a, T b)
+        {
+            if (a > b)
+                return a;
+            return b;
+        }
+
+        int main(void)
+        {
+            double value1 = 10.6;
+            double value2 = 5.4;
+
+            double result = find_max<double>(a, b);
+
+            std::cout << result << std::endl;
+
+            return (0);
+        }
+
+        -> O funcionamento ocorre na "substituição" em tempo de compilação do T para o tipo de dado
+        passado dentro das "< >". No caso acima, <double>.
+
+        -> Então é como se, depois de compilado, tivermos uma função assim:
+
+        double find_max(double a, double b)
+        {
+            if (a > b)
+                return a;
+            return b;
+        }
+
+    -> Podemos, também, chamar essa function template usando <int>:
+        template <typename T>
+        T find_max(T a, T b)
+        {
+            if (a > b)
+                return a;
+            return b;
+        }
+
+        int main(void)
+        {
+            int value1 = 42;
+            int value2 = 5;
+
+            int result = find_max<int>(a, b);
+
+            std::cout << result << std::endl;
+
+            return (0);
+        }
+    
+    -> Podemos usar outra nomenclatura para o "<typename >":
+        template <class T>
+        T find_max(T a, T b)
+        {
+            if (a > b)
+                return a;
+            return b;
+        }
+    
+        -> Não vai fazer a menor diferença.
+
+IMPORTANTE:
+    -> O tipo específico de função para as functions templates é gerado no tempo de compilação...
+
+    -> Então, ao compilarmos, o compilador identifica o tipo de dado que queremos usar na template
+    function e gera uma função nova, usando a declaração da template como base, com o novo tipo de
+    dado.
+
+TEMPLATE FUNCTIONS VS FUNCTION TEMPLATES:
+
+-> FUNCTION TEMPLATES: 
+"É a função base. Isto é, a que declaramos no escopo do nosso código."
+
+-> TEMPLATE FUNCTION:
+"É a função criada pelo compilador durante o tempo de compilação. Isto é, a função nova
+baseada na FUNCTION TEMPLATE (base)."
+
+    -> Podemos passar mais de um parâmetro para nossa FUNCTION TEMPLATE:
+    exemplo:
+        template <typename T1, typename T2>
+        int find_max_size(T1 a, T2 b)
+        {
+            if (sizeof(a) > sizeof(b))
+                return (sizeof(a));
+            return (sizeof(b));
+        }
 
 
 ---------------------------------------------------------------------------------------------------------------------------
