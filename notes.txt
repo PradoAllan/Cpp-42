@@ -1252,6 +1252,48 @@ baseada na FUNCTION TEMPLATE (base)."
             return (sizeof(b));
         }
 
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+DEFAULT TEMPLATE TYPE.
+    -> Basicamente é a forma como definimos qual vai ser o tipo padrão de uma FUNCTION TEMPLATE ou CLASS TEMPLATE,
+    caso o usuário não passe o tipo de dado desejado.
+
+    exemplo:
+        template <typename T = float>
+        class Teste
+        {
+            ...
+        }
+
+    -> No exemplo acima, se o usuário não indicar o tipo de dado para a classe, na hora de instanciar um novo objeto,
+    o tipo padrão dessa instancia será float.
+
+        int main(void)
+        {
+            Teste<int>  v1;     -> Estamos indicando o tipo de dado que desejamos. Int no caso.
+            Teste<>     v2;     -> Estamos dizendo que vamos usar o default. Isto é, float no caso.
+            ...
+        }
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+TEMPLATE SPECIALIZATION.
+    -> É uma forma de criarmos uma TEMPLATE CLASS que tenha duas ou mais variáveis mutáveis <T, U>.
+    template <typename T, typename U>
+    class Teste { ... }
+
+    -> Se tivermos apenas uma dessas variáveis genéricas, teremos uma "PARTIAL SPECIALIZATION".
+    template <typename U>
+    class Teste<int, U> { ... }
+
+    -> Se tivermos ambas variáveis setadas com um default, temos uma "FULL SPECIALIZATION".
+    template <>
+    class Teste<int, bool> { ... }
+
+    -> Parece ser bem inútil. Porém, em códigos grandes, faz sentido termos essa opção pois deixamos "na mão"
+    do compilador decidir qual construtor chamar para a nova instancia.
 
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
