@@ -1298,3 +1298,53 @@ TEMPLATE SPECIALIZATION.
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+STL "STANDARD TEMPLATE LIBRARY".
+    -> Bom link de referencia sobre a STL: https://www.w3schools.com/CPP/cpp_data_structures.asp
+
+    -> A <STL> é composta por 3 principais elementos. Temos um 4 elemento introduzido no C++20:
+        - Containers: "São, basicamente, as estrutura de dados simbolizadas como <elementos>"
+            |
+            |
+            ---> <vector>
+            |
+            ---> <list>
+            |
+            ---> <stack>
+            |
+            ---> <queue>
+            |
+            ---> <set>
+            |
+            ---> <map>
+        - Algorithms: "São as operações feitas dentro/no <elemento>. Isto é, na estrutura de dados X.
+                        Então, podemos executar ações, operações em todos os tipos de ED dentro da
+                        <STL>."
+        - Iterators: "Abstração para acessar os containers, ou seja, as estruturas de dados, de forma
+            |            sequencial ou randomica. Em outras palavras, é uma abstração de um ponteiro."
+            |
+            |
+            ---> "Os ITERATORS são a ponte entre os CONTAINERS e os ALGORITHMS. Isto é, os Algorithms
+            acessam os containers através dos iterators..."
+
+        - Range: "Ele funciona como um LIMITADOR do nosso ITERATOR. Imagina que temos um ponteiro que
+                referencia o término do nosso ALGORITHM. Isto é, faz com que o ITERATOR funcione dentro
+                de um range/limite/escopo específico."
+
+    -> Iterators: "São a equivalencia dos ponteiros em C para manipularmos os tipos de estruturas
+    de dados presentes na STL. Isto é, é um objeto genérico para percorrermos uma estrutura de 
+    dados qualquer."
+
+    -> Map: "É uma versão em CPP de um Hask Table. Um ponto importante nessa estrutura de dados é que
+    não precisamos usar uma STRING como KEY para os elementos que queremos armazenar. Podemos usar
+    qualquer tipo de dado."
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------
+###########################################################################################################################
+---------------------------------------------------------------------------------------------------------------------------
+
+
