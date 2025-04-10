@@ -1,4 +1,4 @@
-NAME = 
+NAME = easyfind
 
 COMPILER = c++
 
@@ -6,7 +6,7 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
