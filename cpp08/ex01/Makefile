@@ -1,4 +1,4 @@
-NAME = 
+NAME = Span
 
 COMPILER = c++
 
@@ -6,7 +6,8 @@ FLAGS = -Wall -Werror -Wextra
 
 CPP_FLAGS = -std=c++98
 
-SRC =
+SRC =	main.cpp \
+		Span.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
