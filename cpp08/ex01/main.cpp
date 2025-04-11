@@ -32,5 +32,18 @@ int main(void)
 
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
+
+    std::cout << "\nTeste com 10000 números:" << std::endl;
+    Span bigSpan(10000);
+    std::vector<int> numbers;
+    std::srand(std::time(NULL));
+    
+    for (int i = 0; i < 10000; ++i) {
+        numbers.push_back(std::rand());
+    }
+    
+    bigSpan.addRange(numbers.begin(), numbers.end());
+    std::cout << "Shortest span: " << bigSpan.shortestSpan() << std::endl;
+    std::cout << "Longest span: " << bigSpan.longestSpan() << std::endl;
     return 0;
 }
