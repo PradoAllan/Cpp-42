@@ -1,6 +1,7 @@
 #pragma once
 
 # include <exception>
+# include <iostream>
 # include <vector>
 # include <algorithm>
 
@@ -28,7 +29,7 @@ class Span
         {
             unsigned int distance = std::distance(begin, end);
             if (_arr.size() + distance > _arr.capacity())
-                throw std::runtime_error("Não há espaço suficiente para adicionar todos os números");
+                throw std::range_error("Não há espaço suficiente para adicionar todos os números");
             _arr.insert(_arr.end(), begin, end);
 	    }
 
