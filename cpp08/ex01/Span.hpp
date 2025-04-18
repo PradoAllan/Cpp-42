@@ -13,9 +13,9 @@ class Span
         std::vector<int>    _arr;
 
         Span(void);
-        Span(const Span &src);
         Span &operator=(const Span &src);
     public:
+        Span(const Span &src);
         Span(const unsigned int &N);
         ~Span(void);
 

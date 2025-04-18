@@ -20,8 +20,8 @@ int main() {
 		--it;
 		while (it != ite)
 		{
-		std::cout << *it << std::endl;
-		++it;
+			std::cout << *it << std::endl;
+			++it;
 		}
 		std::stack<int> s(mstack);
 		std::cout << std::endl;
@@ -37,20 +37,23 @@ int main() {
 		mutantStack.push(50);
 
 		std::cout << "Stack elements using iterators: ";
-		for (MutantStack<int>::iterator it = mutantStack.begin(); it != mutantStack.end(); ++it) {
+		for (MutantStack<int>::iterator it = mutantStack.begin(); it != mutantStack.end(); ++it)
+		{
 			std::cout << *it << " ";
 		}
 		std::cout << std::endl;
 
 		std::cout << "Stack elements in reverse order: ";
-		for (MutantStack<int>::reverse_iterator rit = mutantStack.rbegin(); rit != mutantStack.rend(); ++rit) {
+		for (MutantStack<int>::reverse_iterator rit = mutantStack.rbegin(); rit != mutantStack.rend(); ++rit)
+		{
 			std::cout << *rit << " ";
 		}
 		std::cout << std::endl;
 
 		const MutantStack<int>& constStack = mutantStack;
 		std::cout << "Stack elements using const iterators: ";
-		for (MutantStack<int>::const_iterator cit = constStack.begin(); cit != constStack.end(); ++cit) {
+		for (MutantStack<int>::const_iterator cit = constStack.begin(); cit != constStack.end(); ++cit)
+		{
 			std::cout << *cit << " ";
 		}
 		std::cout << std::endl;
