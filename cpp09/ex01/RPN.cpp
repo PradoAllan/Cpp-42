@@ -1,4 +1,5 @@
 #include "RPN.hpp"
+#include <iostream>
 
 // RPN(void);
 RPN::RPN(void): _input(NULL) {}
@@ -90,6 +91,8 @@ void RPN::execute(void)
         throw(WrongRPNInput());
     for (size_t i = 0; i < this->_input.size(); i++)
     {
+        //std::cout << std::endl;
+        //std::cout << "'" << this->_input[i] << "'" << std::endl;
         if (!isValidChar(this->_input[i], " +-*/"))
             throw(WrongRPNInputChar());
         else if (this->_input[i] != ' ')
@@ -100,11 +103,14 @@ void RPN::execute(void)
                 throw(WrongRPNInput());
             else
             {
-                n1 = this->_stack.top();
-                this->_stack.pop();
                 n2 = this->_stack.top();
                 this->_stack.pop();
+                n1 = this->_stack.top();
+                this->_stack.pop();
+                //std::cout << "value1: " << n1 << std::endl;
+                //std::cout << "value2: " << n2 << std::endl;
                 this->execOperation(n1, n2, this->_input[i]);
+                //std::cout << "result: " << this->_stack.top() << std::endl;
             }
         }
     }

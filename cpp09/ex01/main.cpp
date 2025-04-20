@@ -7,6 +7,7 @@ int main(int ac, char **av)
         return (std::cerr << "Wrong number of parameters." << std::endl, -1);
     RPN exec(av[1]);
     // RPN exec = RPN(av[1]);
+    std::cout << "Input: " << av[1] << std::endl;
 
     try
     {
@@ -18,7 +19,6 @@ int main(int ac, char **av)
         std::cerr << e.what() << std::endl;
     }
 
-    std::cout << "Input: " << av[1] << std::endl;
 
     return (0);
 }
