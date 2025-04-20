@@ -1341,6 +1341,54 @@ STL "STANDARD TEMPLATE LIBRARY".
 ---------------------------------------------------------------------------------------------------------------------------
 ###########################################################################################################################
 ---------------------------------------------------------------------------------------------------------------------------
+Reverse polish notation:
+    -> Prefix + 3 4: O operador de adição está antes dos elementos.
+
+    -> Postfix 3 4 +: O operador de adição está depois dos elementos.
+            |
+            |
+            ---> Reverse Polish Notation.
+
+    -> Infix 3 + 4: O operador de adição está entre os elementos.
+
+    -> Lógica para solucionar o problema de RPN. Básicamente, é um famoso problema para STACK.
+    Isto é, solucionamos esse problema usando uma pilha.
+
+        exemplo:
+            "3 4 +"
+
+            onde N é o elemento atual:
+            if (N é caracter invalido)          -> Precisamos limpar a memória alocada em caso de error()
+                error()
+            else if (N é digito)
+                stack.push(N)
+            else
+            {
+                if (stack.size() < 2)           -> Precisamos limpar a memória alocada em caso de error()
+                    error()
+                value1 = stack.pop()
+                value2 = stack.pop()
+
+                result = value1 N value2        -> Aqui chamaremos uma função que executara
+                                                    a operação representada por N
+                stack.push(result)
+            }
+            
+
+            Vamos percorrendo os elementos e fazemos a seguinte verificação: 
+            Se for um numero, damos o .push() na pilha, se for um operador (+ - / *)
+            damos um .pop() em dois elementos da nossa stack e fazemos a operação
+            usando esses dois elementos popados. O resultado, damos .push()
+            na stack novamente e continuamos a percorrer os elementos...
+            Se não tiver mais elemento nem operador, temos o resultado final da
+            nossa operação.
+
+            OBS: Temos que verificar se temos, no minimo, 2 elementos dentro da
+            nossa stack, quando achamos um operador. Se não tivermos, temos um
+            erro de input.
+
+            OBS2: 
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------
