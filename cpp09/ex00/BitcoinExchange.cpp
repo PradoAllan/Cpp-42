@@ -85,6 +85,8 @@ void BitcoinExchange::readExecInput(void)
     std::string date;
     std::string delim;
     std::string value;
+    double      convertedValue;
+    char        *ptr;
 
     getline(this->_inputFile, s);
     if (s != "date | value")
@@ -94,7 +96,7 @@ void BitcoinExchange::readExecInput(void)
     }
     while (getline(this->_inputFile, s))
     {
-        std::cout << s << std::endl;
+        // std::cout << s << std::endl;
         if (s.empty())
         {
             std::cerr << "Error: Line is empty." << std::endl;
@@ -108,15 +110,23 @@ void BitcoinExchange::readExecInput(void)
         date = s.substr(0, 10);
 		delim = s.substr(10, 3);
 		value = s.substr(13);
-        // std::cout << date << std::endl;
-        // std::cout << delim << std::endl;
-        // std::cout << value << std::endl;
-        if (delim != " | " || !isValidDate(date))
+        convertedValue = std::strtod(value.c_str(), &ptr);
+        if (delim != " | " || !isValidDate(date) || *ptr != '\0')
             std::cerr << "Error: bad input => " << s << std::endl;
-        else if (std::strtod(value.c_str(), NULL) < 0)
+        else if (convertedValue < 0)
             std::cerr << "Error: not a positive number." << std::endl;
-        else if (std::strtod(value.c_str(), NULL) > 1000)
+        else if (convertedValue > 1000)
             std::cerr << "Error: too large number." << std::endl;
+        else
+        {
+            std::map<std::string, float>::iterator first;
+            std::map<std::string, float>::iterator last = this->_data.end();
+            for (first = this->_data.begin(); first != last ; first++)
+            {
+                if (first->first == date)
+                    std::cout << first->first << " => " << convertedValue << " = " << first->second * convertedValue << std::endl;
+            }
+        }
     }
 }
 
