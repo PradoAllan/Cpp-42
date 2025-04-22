@@ -1,14 +1,3 @@
-• Your program must take a file as argument.
-• Each line in this file must use the following format: "date | value".
-• A valid date will always be in the following format: Year-Month-Day.
-• A valid value must be either a float or a positive integer, between 0 and 1000.
-
-2021-12-10 | 4
-2021-12-11 | 10
-2021-12-12 | 0.5
-2021-12-13 | 1
-2021-12-14 | 2
-
 date | value
 2011-01-03 | 3
 2011-01-03 | 2
@@ -19,3 +8,4 @@ date | value
 2001-42-42
 2012-01-11 | 1
 2012-01-11 | 2147483648
+2025-13-10 | 8

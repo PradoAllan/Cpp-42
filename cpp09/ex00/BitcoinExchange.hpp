@@ -6,6 +6,7 @@
 # include <exception>
 
 # define OPEN_FILE_ERROR "Could not open the files..."
+# define WRONG_FORMAT "Wrong input file format..."
 
 class BitcoinExchange
 {
@@ -23,6 +24,7 @@ class BitcoinExchange
         BitcoinExchange &operator=(const BitcoinExchange &src);
 
         void    populateData(void);
+        void    readExecInput(void);
 
         class OpenFileError : public std::exception
         {
