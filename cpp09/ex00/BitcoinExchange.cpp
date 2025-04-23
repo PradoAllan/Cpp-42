@@ -58,24 +58,36 @@ static bool isLeapYear(int year)
 
 static bool isValidDate(const std::string& line)
 {
-    if (line.length() < 10) return false;
-
+    if (line.length() < 10)
+        return (false);
     std::string date = line.substr(0, 10);
-
-    if (date[4] != '-' || date[7] != '-') return false;
-
+    if (date[4] != '-' || date[7] != '-')
+        return (false);
     int year = std::atoi(date.substr(0, 4).c_str());
     int month = std::atoi(date.substr(5, 2).c_str());
     int day = std::atoi(date.substr(8, 2).c_str());
-
-    if (month < 1 || month > 12) return false;
-
+    if (month < 1 || month > 12)
+        return (false);
     int daysInMonth[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-    if (isLeapYear(year)) daysInMonth[1] = 29;
-
-    if (day < 1 || day > daysInMonth[month - 1]) return false;
-
+    if (isLeapYear(year))
+        daysInMonth[1] = 29;
+    if (day < 1 || day > daysInMonth[month - 1])
+        return (false);
     return true;
+}
+
+// double  getCorrectValue(std::string target);
+double BitcoinExchange::getCorrectValue(std::string target)
+{
+    std::map<std::string, float>::iterator first = this->_data.begin();
+	for (; first != this->_data.end(); first++)
+		if (first->first == target) 
+			return (first->second);
+	first = this->_data.lower_bound(target); //searches for the next greater key (date)
+	if (first == this->_data.begin()) 
+		return (-1.0);
+	first--; //we want the smaller one, so the one before the next greater one --> decrement
+	return (first->second);
 }
 
 // void    readExecInput(void);
@@ -96,7 +108,6 @@ void BitcoinExchange::readExecInput(void)
     }
     while (getline(this->_inputFile, s))
     {
-        // std::cout << s << std::endl;
         if (s.empty())
         {
             std::cerr << "Error: Line is empty." << std::endl;
@@ -119,13 +130,13 @@ void BitcoinExchange::readExecInput(void)
             std::cerr << "Error: too large number." << std::endl;
         else
         {
-            std::map<std::string, float>::iterator first;
-            std::map<std::string, float>::iterator last = this->_data.end();
-            for (first = this->_data.begin(); first != last ; first++)
-            {
-                if (first->first == date)
-                    std::cout << first->first << " => " << convertedValue << " = " << first->second * convertedValue << std::endl;
-            }
+            double targetValue = this->getCorrectValue(date);
+            if (targetValue == -1)
+			{
+				std::cout << "Error: date too early => " << date << std::endl;
+				continue;
+			}
+            std::cout << date << " => " << convertedValue << " = " << convertedValue * targetValue << std::endl;
         }
     }
 }

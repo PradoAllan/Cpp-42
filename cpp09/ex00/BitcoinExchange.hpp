@@ -25,6 +25,7 @@ class BitcoinExchange
 
         void    populateData(void);
         void    readExecInput(void);
+        double  getCorrectValue(std::string target);
 
         class OpenFileError : public std::exception
         {
