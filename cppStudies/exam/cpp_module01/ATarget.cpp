@@ -1,23 +1,13 @@
 #include "ATarget.hpp"
+#include "ASpell.hpp"
 
-// ATarget(void);
-ATarget::ATarget(void) {}
-
-// ATarget(const ATarget &src);
-ATarget::ATarget(const ATarget &src) {*this = src;}
-
-// ATarget(const std::string &type);
-ATarget::ATarget(const std::string &type): type(type) {}
-
-// virtual ~ATarget(void);
-ATarget::~ATarget(void) {}
-
-// ATarget &operator=(const ATarget &src);
-ATarget &ATarget::operator=(const ATarget &src)
+// ATarget(std::string type);
+ATarget::ATarget(std::string type)
 {
-    this->type = src.type;
-    return (*this);
+    this->type = type;
 }
+// ~ATarget(void);
+ATarget::~ATarget(void) {}
 
 // const std::string &getType(void) const;
 const std::string &ATarget::getType(void) const
@@ -25,8 +15,8 @@ const std::string &ATarget::getType(void) const
     return (this->type);
 }
 
-// void getHitBySpell(const ASpell &target);
-void ATarget::getHitBySpell(const ASpell &target) const
+// void getHitBySpell(const ASpell &src);
+void ATarget::getHitBySpell(ASpell const &src) const
 {
-    std::cout << this->getType() << " has been " << target.getEffects() << "!" << std::endl;
+    std::cout << this->getType() << " has been " << src.getEffects() << "!" << std::endl;
 }
