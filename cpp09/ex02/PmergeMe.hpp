@@ -3,12 +3,15 @@
 # include <vector>
 # include <deque>
 # include <exception>
+# include <algorithm>
+# include <ctime>
+# include <cstdlib>
 
 class PmergeMe
 {
     private:
-        std::vector<unsigned int> _v;
-        std::deque<unsigned int> _d;
+        std::vector<int> _v;
+        std::deque<int> _d;
         
         bool    _validateInput(int ac, char **av);
     public:
@@ -21,7 +24,8 @@ class PmergeMe
 
         void    sortVector(void);
         void    sortDeque(void);
-        void    showResults(void);
+        template <typename T>
+        void    showResults(const T &container);
 
         class InvalidInput : public std::exception
         {
